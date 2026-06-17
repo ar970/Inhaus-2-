@@ -211,7 +211,7 @@ export function CartDrawer() {
                           aria-label="Coupon code"
                           className="h-11 flex-1 rounded-pill border border-line bg-white px-4 text-sm outline-none placeholder:text-muted/70 focus:border-accent"
                         />
-                        <Button variant="dark" size="sm" onClick={handleApply}>
+                        <Button variant="ink" size="sm" onClick={handleApply}>
                           Apply
                         </Button>
                       </div>

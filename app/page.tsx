@@ -6,7 +6,18 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Origin } from "@/components/sections/Origin";
 import { Reviews } from "@/components/sections/Reviews";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { Marquee } from "@/components/ui/Marquee";
 import { PRODUCT } from "@/lib/product";
+
+const TICKER = [
+  "Specialty Arabica",
+  "Chikmagalur single origin",
+  "~20 cups per pouch",
+  "No machine needed",
+  "Ready in 60 seconds",
+  "Hot or iced",
+  "Free shipping across India",
+];
 
 const productJsonLd = {
   "@context": "https://schema.org",
@@ -36,6 +47,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <Hero />
+      <Marquee
+        items={TICKER}
+        className="border-y border-ink bg-ink py-3.5 text-cream"
+      />
       <TrustStrip />
       <ChooseYourFuel />
       <ProductShowcase />

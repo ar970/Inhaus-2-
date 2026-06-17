@@ -1,19 +1,18 @@
 import { cn } from "@/lib/utils";
 
-type Variant = "accent" | "dark" | "light" | "outline" | "ghost" | "glass";
+type Variant = "accent" | "ink" | "paper" | "outline" | "glass" | "link";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-pill font-semibold tracking-tight transition duration-300 ease-out active:scale-[0.98] select-none disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
+  "group inline-flex items-center justify-center gap-2 rounded-pill font-semibold tracking-tight transition duration-300 ease-out active:scale-[0.98] select-none disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
 
-const variants: Record<Variant, string> = {
+const variants: Record<Exclude<Variant, "link">, string> = {
   accent:
-    "bg-accent text-[var(--accent-contrast)] shadow-[0_10px_34px_-12px_rgb(var(--accent-rgb)/0.7)] hover:brightness-[1.06] hover:-translate-y-0.5",
-  dark: "bg-ink text-cream hover:bg-ink-soft hover:-translate-y-0.5",
-  light: "bg-cream text-ink hover:bg-white hover:-translate-y-0.5",
+    "bg-accent text-[var(--accent-contrast)] shadow-[0_12px_34px_-14px_rgb(var(--accent-rgb)/0.75)] hover:brightness-[1.05] hover:-translate-y-0.5",
+  ink: "bg-ink text-cream hover:bg-espresso hover:-translate-y-0.5",
+  paper: "bg-cream text-ink hover:bg-white hover:-translate-y-0.5",
   outline:
-    "border border-ink/20 text-ink hover:border-ink/40 hover:bg-ink/[0.04]",
-  ghost: "text-ink hover:bg-ink/[0.05]",
+    "border border-ink/25 text-ink hover:bg-ink hover:text-cream hover:border-ink",
   glass:
     "bg-cream/10 text-cream border border-cream/25 backdrop-blur-md hover:bg-cream/20 hover:-translate-y-0.5",
 };
@@ -36,6 +35,17 @@ export function Button({
   className,
   ...props
 }: ButtonProps) {
+  if (variant === "link") {
+    return (
+      <button
+        className={cn(
+          "group inline-flex items-center gap-2 font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors duration-300 hover:decoration-ink",
+          className,
+        )}
+        {...props}
+      />
+    );
+  }
   return (
     <button
       className={cn(base, variants[variant], sizes[size], className)}

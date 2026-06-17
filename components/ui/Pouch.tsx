@@ -119,7 +119,7 @@ export function Pouch({
           textAnchor="middle"
           style={{
             ...labelStyle,
-            fontFamily: "var(--font-fraunces), serif",
+            fontFamily: "var(--font-instrument), serif",
             fontStyle: "italic",
             fontWeight: 500,
             fontSize: 16,

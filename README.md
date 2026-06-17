@@ -11,7 +11,8 @@ that blends Apple's simplicity, Araku's authenticity, and Liquid Death's clarity
 - **Tailwind CSS v4** (CSS-first theming via `@theme`)
 - **motion** (Framer Motion) for subtle, reduced-motion-aware transitions
 - **lucide-react** for minimal line icons
-- Fonts: **Fraunces** (display serif) + **Plus Jakarta Sans** (body) via `next/font`
+- Fonts: **Instrument Serif** (editorial display) + **Plus Jakarta Sans** (body) + **Space Mono** (labels/meta) via `next/font`
+- Aesthetic: **warm editorial × Gen-Z** — paper grain, earthy palette, marquee ticker, rotating seal stamps, mono captions, big serif type (reference DNA: Araku coffee)
 
 ## Getting started
 

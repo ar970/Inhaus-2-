@@ -1,21 +1,29 @@
+import { Quote } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stars } from "@/components/ui/Stars";
 import { REVIEWS } from "@/lib/reviews";
 
 export function Reviews() {
   return (
-    <section id="reviews" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <div className="flex items-center justify-center gap-3">
-            <Stars rating={5} size={20} />
-            <span className="text-sm font-semibold text-ink">
-              4.9/5 · loved across India
-            </span>
-          </div>
-          <h2 className="mt-4 font-display text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-tight tracking-tight text-ink">
-            Real cups. Real reviews.
+    <section id="reviews" className="px-5 py-20 sm:px-7 sm:py-28">
+      <div className="mx-auto max-w-[1400px]">
+        <Reveal className="flex items-center gap-3 text-muted">
+          <span className="label text-ink">(06)</span>
+          <span className="h-px w-8 bg-line" />
+          <span className="label">Word of mouth</span>
+        </Reveal>
+
+        <Reveal
+          delay={0.05}
+          className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <h2 className="font-display text-[clamp(2.6rem,6vw,4.5rem)] leading-[0.95] tracking-[-0.02em] text-ink">
+            Real cups. <span className="italic text-accent transition-colors duration-500">Real reviews.</span>
           </h2>
+          <div className="flex items-center gap-3">
+            <Stars rating={5} size={18} />
+            <span className="label text-ink">4.9 / 5 · loved across India</span>
+          </div>
         </Reveal>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -23,18 +31,16 @@ export function Reviews() {
             <Reveal
               key={r.name}
               delay={i * 0.06}
-              className="flex h-full flex-col rounded-3xl border border-line bg-white p-6"
+              className="flex h-full flex-col rounded-[1.25rem] border border-line bg-cream p-6"
             >
-              <Stars rating={r.rating} />
-              <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-soft">
-                “{r.body}”
+              <Quote size={26} className="text-accent transition-colors duration-500" fill="currentColor" />
+              <p className="mt-4 flex-1 font-display text-xl leading-snug text-ink">
+                {r.body}
               </p>
-              <div className="mt-5 border-t border-line pt-4">
-                <p className="text-sm font-semibold text-ink">{r.name}</p>
-                <p className="text-xs text-muted">{r.location}</p>
-                <span className="mt-3 inline-block rounded-pill bg-accent/10 px-3 py-1 text-xs font-medium text-accent transition-colors duration-500">
-                  {r.tag}
-                </span>
+              <div className="mt-6 border-t border-line pt-4">
+                <Stars rating={r.rating} size={14} />
+                <p className="mt-3 label text-ink">{r.name}</p>
+                <p className="label !tracking-[0.12em] text-muted">{r.location} · {r.tag}</p>
               </div>
             </Reveal>
           ))}

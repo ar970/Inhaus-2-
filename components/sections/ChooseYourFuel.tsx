@@ -22,18 +22,28 @@ export function ChooseYourFuel() {
   };
 
   return (
-    <section id="fuel" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-tight tracking-tight text-ink">
-            Choose Your Fuel.
+    <section id="fuel" className="px-5 py-20 sm:px-7 sm:py-28">
+      <div className="mx-auto max-w-[1400px]">
+        <Reveal className="flex items-center gap-3 text-muted">
+          <span className="label text-ink">(02)</span>
+          <span className="h-px w-8 bg-line" />
+          <span className="label">Pick your brew</span>
+        </Reveal>
+
+        <Reveal
+          delay={0.05}
+          className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <h2 className="font-display text-[clamp(2.6rem,6vw,4.5rem)] leading-[0.95] tracking-[-0.02em] text-ink">
+            Choose your <span className="italic text-accent transition-colors duration-500">fuel.</span>
           </h2>
-          <p className="mt-4 text-lg text-muted">
-            Every ambition deserves a different brew.
+          <p className="max-w-xs text-espresso/80">
+            Every ambition deserves a different brew. Tap one — the whole place
+            shifts to match.
           </p>
         </Reveal>
 
-        <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 no-scrollbar sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 -mx-5">
+        <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 no-scrollbar sm:grid sm:grid-cols-3 sm:overflow-visible">
           {PERSONA_ORDER.map((id, i) => {
             const p = PERSONAS[id];
             const Icon = ICONS[id];
@@ -44,55 +54,63 @@ export function ChooseYourFuel() {
               <Reveal
                 key={id}
                 delay={i * 0.08}
-                className="min-w-[80%] snap-center sm:min-w-0"
+                className="min-w-[78%] snap-center sm:min-w-0"
               >
                 <button
                   onClick={() => select(id)}
                   aria-pressed={selected}
                   className={cn(
-                    "group relative flex h-full w-full flex-col items-start rounded-3xl border bg-white p-7 text-left transition-all duration-500 ease-out",
+                    "group relative flex h-full w-full flex-col items-start overflow-hidden rounded-[1.5rem] border bg-cream p-7 text-left transition-all duration-500 ease-out",
                     selected
-                      ? "-translate-y-1 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.4)]"
-                      : "border-line opacity-60 hover:opacity-100 hover:-translate-y-0.5",
+                      ? "-translate-y-1"
+                      : "border-line opacity-55 hover:opacity-100 hover:-translate-y-0.5",
                   )}
                   style={
                     selected
                       ? {
-                          borderColor: tint(0.5),
-                          boxShadow: `0 28px 70px -30px ${tint(0.55)}`,
+                          borderColor: tint(0.55),
+                          backgroundColor: tint(0.07),
+                          boxShadow: `0 26px 60px -32px ${tint(0.6)}`,
                         }
                       : undefined
                   }
                 >
-                  <span
-                    className="flex h-14 w-14 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:scale-105"
-                    style={{ backgroundColor: tint(0.12), color: p.accent }}
-                  >
-                    <Icon size={26} strokeWidth={1.9} />
-                  </span>
+                  <div className="flex w-full items-start justify-between">
+                    <span
+                      className="font-display text-5xl leading-none"
+                      style={{ color: p.accent }}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span
+                      className="flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundColor: tint(0.14), color: p.accent }}
+                    >
+                      <Icon size={22} strokeWidth={1.9} />
+                    </span>
+                  </div>
 
-                  <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
+                  <h3 className="mt-10 font-display text-3xl leading-none text-ink">
                     {p.fuel}
                   </h3>
-                  <p className="mt-2 text-[15px] text-muted">{p.cardSubtext}</p>
+                  <p className="mt-3 text-[15px] text-espresso/75">
+                    {p.cardSubtext}
+                  </p>
 
                   <span
-                    className="mt-7 inline-flex items-center gap-2 rounded-pill px-5 py-2.5 text-sm font-semibold transition-all duration-500"
-                    style={{
-                      backgroundColor: selected ? p.accent : tint(0.1),
-                      color: selected ? p.accentContrast : p.accent,
-                    }}
+                    className="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] transition-all duration-500"
+                    style={{ color: p.accent }}
                   >
                     {p.cardCta}
                     <ArrowRight
-                      size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5"
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
                     />
                   </span>
 
                   {selected && (
                     <span
-                      className="absolute right-5 top-5 h-2.5 w-2.5 rounded-full"
+                      className="absolute right-6 top-6 h-2.5 w-2.5 animate-pulse rounded-full"
                       style={{ backgroundColor: p.accent }}
                       aria-hidden
                     />

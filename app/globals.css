@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   INHAUS — Design System
+   Typography: Fraunces (display serif) + Plus Jakarta Sans (body)
+   Theming: a single dynamic --accent drives the whole site and re-themes
+   smoothly on persona selection.
+   ========================================================================= */
+
+@theme {
+  /* Brand neutrals — warm, premium, coffee-inspired */
+  --color-cream: #faf7f2;
+  --color-cream-deep: #f3ece1;
+  --color-sand: #ece2d3;
+  --color-ink: #17120e;
+  --color-ink-soft: #2a221c;
+  --color-muted: #6f6359;
+  --color-line: #e7ddcf;
+
+  --radius-pill: 999px;
+}
+
+@theme inline {
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-jakarta);
+
+  /* Dynamic accent — reads runtime CSS vars so utilities like bg-accent,
+     text-accent, bg-accent/10 all re-theme live when the persona changes.
+     Opacity modifiers (e.g. bg-accent/10) resolve via color-mix in v4. */
+  --color-accent: rgb(var(--accent-rgb));
+}
+
+:root {
+  /* Default accent = Study / Orange */
+  --accent-rgb: 255 107 0;
+  --accent: #ff6b00;
+  --accent-contrast: #ffffff;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* offset for fixed header when jumping to anchors */
+  scroll-padding-top: 84px;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgb(var(--accent-rgb) / 0.22);
+  color: var(--color-ink);
+}
+
+/* Display headings */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+/* Premium focus ring */
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid rgb(var(--accent-rgb) / 0.9);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Smooth accent transitions wherever accent-driven colors are used */
+.accent-transition,
+.accent-transition * {
+  transition-property: color, background-color, border-color, fill, stroke,
+    box-shadow, opacity;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hide scrollbars on horizontal swipe rows while keeping scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Subtle film grain overlay (asset-free) */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ===== Ambient, low-key keyframes (disabled under reduced motion) ===== */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -2%, 0) scale(1.08);
+  }
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-drift {
+  animation: drift 26s ease-in-out infinite;
+}
+.animate-slow-zoom {
+  animation: slow-zoom 24s ease-in-out infinite alternate;
+}
+.animate-floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

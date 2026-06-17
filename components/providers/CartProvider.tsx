@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { COUPON, PRODUCT } from "@/lib/product";
@@ -26,6 +27,7 @@ interface CartContextValue {
   coupon: string | null;
   couponError: string | null;
   isOpen: boolean;
+  toast: string | null;
   open: () => void;
   close: () => void;
   addItem: (label: string, qty?: number) => void;
@@ -39,21 +41,17 @@ const CartContext = createContext<CartContextValue | null>(null);
 const STORAGE_KEY = "inhaus-cart";
 
 const slug = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartLine[]>([]);
   const [coupon, setCoupon] = useState<string | null>(null);
   const [couponError, setCouponError] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Hydrate from localStorage after mount. We intentionally read this external
-  // store in an effect (not during render) so SSR and the first client render
-  // match — initializing from localStorage would mismatch the cart badge.
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     try {
@@ -64,7 +62,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         if (typeof parsed.coupon === "string") setCoupon(parsed.coupon);
       }
     } catch {
-      /* ignore corrupt storage */
+      /* ignore */
     }
     setHydrated(true);
   }, []);
@@ -75,27 +73,34 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ items, coupon }));
     } catch {
-      /* ignore quota errors */
+      /* ignore */
     }
   }, [items, coupon, hydrated]);
 
   const open = useCallback(() => setIsOpen(true), []);
   const close = useCallback(() => setIsOpen(false), []);
 
-  const addItem = useCallback((label: string, qty: number = 1) => {
-    const id = slug(label);
-    const add = Math.max(1, qty);
-    setItems((prev) => {
-      const existing = prev.find((l) => l.id === id);
-      if (existing) {
-        return prev.map((l) =>
-          l.id === id ? { ...l, qty: l.qty + add } : l,
-        );
-      }
-      return [...prev, { id, label, qty: add, price: PRODUCT.price }];
-    });
-    setIsOpen(true);
+  const showToast = useCallback((msg: string) => {
+    setToast(msg);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 2600);
   }, []);
+
+  const addItem = useCallback(
+    (label: string, qty: number = 1) => {
+      const id = slug(label);
+      const add = Math.max(1, qty);
+      setItems((prev) => {
+        const existing = prev.find((l) => l.id === id);
+        if (existing) {
+          return prev.map((l) => (l.id === id ? { ...l, qty: l.qty + add } : l));
+        }
+        return [...prev, { id, label, qty: add, price: PRODUCT.price }];
+      });
+      showToast(`${label} added to cart`);
+    },
+    [showToast],
+  );
 
   const setQty = useCallback((id: string, qty: number) => {
     setItems((prev) =>
@@ -140,7 +145,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     () => (coupon ? Math.round((subtotal * COUPON.percent) / 100) : 0),
     [coupon, subtotal],
   );
-
   const total = Math.max(0, subtotal - discount);
 
   const value: CartContextValue = {
@@ -152,6 +156,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     coupon,
     couponError,
     isOpen,
+    toast,
     open,
     close,
     addItem,

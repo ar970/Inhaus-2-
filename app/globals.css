@@ -1,44 +1,32 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   INHAUS — Warm Editorial design system
-   Reference DNA: Araku (earthy, editorial, authentic) × Gen-Z (bold type,
-   marquees, stickers, grain). Persona accent stays dynamic.
-   Type: Instrument Serif (display) · Plus Jakarta Sans (body) · Space Mono (meta)
+   INHAUS — Dark Reserve
+   Near-black + gold luxury. Playfair Display / Inter / DM Mono.
    ========================================================================= */
 
 @theme {
-  /* Warm paper neutrals */
-  --color-paper: #f3ebdb;
-  --color-cream: #faf4e8;
-  --color-sand: #e8dcc4;
-  --color-kraft: #ddc9a6;
-  --color-ink: #1e150e;
-  --color-espresso: #4a3526;
-  --color-muted: #7d6f5d;
-  --color-line: #d9c9ab;
-
-  /* Editorial earth tones (non-persona accents) */
-  --color-clay: #b5542b;
-  --color-olive: #6f6a3a;
-
-  --radius-pill: 999px;
+  --color-dark: #0d0b0a;
+  --color-mid: #1a1612;
+  --color-card: #15110d;
+  --color-deep: #050404;
+  --color-gold: #d4af37;
+  --color-alert: #e63946;
+  --color-line: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
-  --font-display: var(--font-instrument);
-  --font-sans: var(--font-jakarta);
-  --font-mono: var(--font-space-mono);
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-dm-mono);
 
-  /* Dynamic persona accent (set on <html> at runtime). */
-  --color-accent: rgb(var(--accent-rgb));
+  /* gold accent (static) */
+  --color-accent: var(--accent);
 }
 
 :root {
-  /* default: Study / Orange */
-  --accent-rgb: 255 107 0;
-  --accent: #ff6b00;
-  --accent-contrast: #ffffff;
+  --accent: #d4af37;
+  --accent-contrast: #0d0b0a;
 }
 
 * {
@@ -47,58 +35,46 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 76px;
+  scroll-padding-top: 90px;
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--color-dark);
+  color: rgba(255, 255, 255, 0.85);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   overflow-x: hidden;
-}
-
-/* warm paper grain over the whole page */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  /* room for the fixed bottom urgency bar */
+  padding-bottom: 64px;
 }
 
 ::selection {
-  background: rgb(var(--accent-rgb) / 0.25);
-  color: var(--color-ink);
+  background: var(--color-gold);
+  color: var(--color-dark);
 }
 
-/* ---- Type helpers ---- */
+/* ---- type helpers ---- */
 .font-display {
   font-family: var(--font-display), Georgia, serif;
-  letter-spacing: -0.01em;
 }
 .font-mono {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
-.label {
-  font-family: var(--font-mono), ui-monospace, monospace;
+.eyebrow {
+  font-family: var(--font-mono), monospace;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-gold);
 }
 
 /* focus ring */
 :where(a, button, input, [tabindex]):focus-visible {
-  outline: 2px solid rgb(var(--accent-rgb) / 0.9);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
-/* hide scrollbars on swipe rows */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -107,13 +83,8 @@ body::before {
   display: none;
 }
 
-/* editorial film grain (for dark blocks / imagery) */
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.5'/%3E%3C/svg%3E");
-}
-
-/* ---- Ambient keyframes (disabled under reduced motion) ---- */
-@keyframes marquee {
+/* ---- marquee ---- */
+@keyframes scroll-x {
   from {
     transform: translateX(0);
   }
@@ -121,40 +92,21 @@ body::before {
     transform: translateX(-50%);
   }
 }
-@keyframes spin-slow {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes floaty {
-  0%,
-  100% {
-    transform: translateY(0) rotate(var(--rot, 0deg));
-  }
-  50% {
-    transform: translateY(-10px) rotate(var(--rot, 0deg));
-  }
-}
-@keyframes slow-zoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
+.animate-scroll-x {
+  animation: scroll-x var(--marquee-duration, 26s) linear infinite;
 }
 
-.animate-marquee {
-  animation: marquee var(--marquee-duration, 32s) linear infinite;
+@keyframes pulse-alert {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
-.animate-spin-slow {
-  animation: spin-slow 22s linear infinite;
-}
-.animate-floaty {
-  animation: floaty 7s ease-in-out infinite;
-}
-.animate-slow-zoom {
-  animation: slow-zoom 22s ease-in-out infinite alternate;
+.animate-pulse-alert {
+  animation: pulse-alert 1.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

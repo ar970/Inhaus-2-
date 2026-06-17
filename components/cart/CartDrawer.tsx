@@ -2,17 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import {
-  ArrowRight,
-  Check,
-  Minus,
-  Plus,
-  ShoppingBag,
-  Tag,
-  Trash2,
-  Truck,
-  X,
-} from "lucide-react";
+import { ArrowRight, Check, Minus, Plus, ShoppingBag, Trash2, Truck, X } from "lucide-react";
 import { useCart } from "@/components/providers/CartProvider";
 import { Button } from "@/components/ui/Button";
 import { COUPON } from "@/lib/product";
@@ -49,10 +39,6 @@ export function CartDrawer() {
     };
   }, [isOpen, close]);
 
-  const handleApply = () => {
-    if (applyCoupon(code)) setCode("");
-  };
-
   const handleDone = () => {
     items.forEach((l) => removeItem(l.id));
     removeCoupon();
@@ -68,31 +54,30 @@ export function CartDrawer() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Shopping cart">
+        <div className="fixed inset-0 z-[70]" role="dialog" aria-modal="true" aria-label="Cart">
           <motion.div
-            className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={close}
           />
-
           <motion.aside
-            className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-cream shadow-2xl"
+            className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col border-l border-white/10 bg-mid text-white"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 320, damping: 36 }}
           >
-            <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <h2 className="font-display text-xl font-semibold text-ink">
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
+              <h2 className="font-display text-xl text-white">
                 {placed ? "Order confirmed" : "Your cart"}
               </h2>
               <button
                 onClick={close}
                 aria-label="Close cart"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-ink/5"
+                className="flex h-9 w-9 items-center justify-center text-white/60 transition-colors hover:text-white"
               >
                 <X size={20} />
               </button>
@@ -100,82 +85,77 @@ export function CartDrawer() {
 
             {placed ? (
               <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-[var(--accent-contrast)]">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold text-dark">
                   <Check size={30} strokeWidth={2.5} />
                 </div>
-                <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
-                  You&apos;re all set.
-                </h3>
-                <p className="mt-2 max-w-xs text-sm text-muted">
-                  This is a demo checkout — no payment was taken. Your café-style
-                  coffee would be on its way, shipping free across India.
+                <h3 className="mt-6 font-display text-2xl text-white">You&apos;re all set.</h3>
+                <p className="mt-2 max-w-xs text-sm text-white/55">
+                  Demo checkout — no payment was taken. Your INHAUS would be on its
+                  way, shipping free across India.
                 </p>
-                <Button onClick={handleDone} className="mt-8" size="lg">
+                <Button onClick={handleDone} variant="gold" size="lg" className="mt-8">
                   Continue
                 </Button>
               </div>
             ) : items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-sand text-ink-soft">
-                  <ShoppingBag size={28} />
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 text-white/60">
+                  <ShoppingBag size={26} />
                 </div>
-                <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
-                  Your cart is empty
-                </h3>
-                <p className="mt-2 max-w-xs text-sm text-muted">
-                  One pouch makes ~20 cups of café-style coffee. Your next great
-                  cup is one tap away.
+                <h3 className="mt-6 font-display text-2xl text-white">Your cart is empty</h3>
+                <p className="mt-2 max-w-xs text-sm text-white/55">
+                  One bottle makes ~20 cups of café-style coffee.
                 </p>
-                <Button onClick={startShopping} className="mt-8" size="lg">
-                  Shop the pouch
+                <Button onClick={startShopping} variant="gold" size="lg" className="mt-8">
+                  Shop The Reserve
                 </Button>
               </div>
             ) : (
               <>
                 <div className="flex-1 overflow-y-auto px-6 py-4">
-                  <ul className="divide-y divide-line">
+                  <ul className="divide-y divide-white/10">
                     {items.map((line) => (
                       <li key={line.id} className="flex gap-4 py-4">
-                        <div className="flex h-20 w-16 shrink-0 items-center justify-center rounded-xl bg-ink">
-                          <div className="h-10 w-7 rounded-md bg-accent transition-[background-color] duration-500" />
+                        <div className="flex h-20 w-16 shrink-0 items-center justify-center border border-white/10 bg-white/[0.03]">
+                          <span className="font-display text-2xl text-gold">
+                            {line.label.charAt(0)}
+                          </span>
                         </div>
                         <div className="flex flex-1 flex-col">
                           <div className="flex justify-between gap-3">
                             <div>
-                              <p className="font-semibold text-ink">
-                                INHAUS Concentrate
+                              <p className="font-medium text-white">{line.label}</p>
+                              <p className="font-mono text-[0.7rem] uppercase tracking-[0.1em] text-white/40">
+                                200ml · ~20 cups
                               </p>
-                              <p className="text-sm text-muted">{line.label}</p>
                             </div>
                             <button
                               onClick={() => removeItem(line.id)}
                               aria-label={`Remove ${line.label}`}
-                              className="text-muted transition-colors hover:text-ink"
+                              className="text-white/40 transition-colors hover:text-white"
                             >
                               <Trash2 size={16} />
                             </button>
                           </div>
                           <div className="mt-auto flex items-center justify-between pt-2">
-                            <div className="flex items-center rounded-pill border border-line">
+                            <div className="flex items-center border border-white/15">
                               <button
                                 onClick={() => setQty(line.id, line.qty - 1)}
                                 aria-label="Decrease quantity"
-                                className="flex h-8 w-8 items-center justify-center text-ink-soft transition-colors hover:text-accent"
+                                className="flex h-8 w-8 items-center justify-center text-white/70 transition-colors hover:text-gold"
                               >
                                 <Minus size={14} />
                               </button>
-                              <span className="w-7 text-center text-sm font-semibold tabular-nums">
-                                {line.qty}
-                              </span>
+                              <span className="w-7 text-center font-mono text-sm">{line.qty}</span>
                               <button
                                 onClick={() => setQty(line.id, line.qty + 1)}
                                 aria-label="Increase quantity"
-                                className="flex h-8 w-8 items-center justify-center text-ink-soft transition-colors hover:text-accent"
+                                className="flex h-8 w-8 items-center justify-center text-white/70 transition-colors hover:text-gold"
                               >
                                 <Plus size={14} />
                               </button>
                             </div>
-                            <span className="font-semibold tabular-nums text-ink">
+                            <span className="font-medium tabular-nums text-white">
                               {formatINR(line.qty * line.price)}
                             </span>
                           </div>
@@ -185,17 +165,15 @@ export function CartDrawer() {
                   </ul>
                 </div>
 
-                <div className="border-t border-line px-6 py-5">
-                  {/* coupon */}
+                <div className="border-t border-white/10 px-6 py-5">
                   {coupon ? (
-                    <div className="mb-4 flex items-center justify-between rounded-xl bg-accent/10 px-4 py-3">
-                      <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                        <Tag size={15} className="text-accent" />
-                        {coupon} applied · {COUPON.percent}% off
+                    <div className="mb-4 flex items-center justify-between border border-gold/40 bg-gold/10 px-4 py-3">
+                      <span className="font-mono text-[0.72rem] uppercase tracking-[0.08em] text-gold">
+                        {coupon} · {COUPON.percent}% off
                       </span>
                       <button
                         onClick={removeCoupon}
-                        className="text-xs font-medium text-muted underline-offset-2 hover:underline"
+                        className="text-[0.7rem] uppercase tracking-[0.08em] text-white/50 hover:text-white"
                       >
                         Remove
                       </button>
@@ -206,66 +184,56 @@ export function CartDrawer() {
                         <input
                           value={code}
                           onChange={(e) => setCode(e.target.value)}
-                          onKeyDown={(e) => e.key === "Enter" && handleApply()}
-                          placeholder="Coupon code"
+                          onKeyDown={(e) => e.key === "Enter" && (applyCoupon(code), setCode(""))}
+                          placeholder="COUPON CODE"
                           aria-label="Coupon code"
-                          className="h-11 flex-1 rounded-pill border border-line bg-white px-4 text-sm outline-none placeholder:text-muted/70 focus:border-accent"
+                          className="h-11 flex-1 border border-white/15 bg-transparent px-4 font-mono text-xs uppercase tracking-[0.08em] text-white outline-none placeholder:text-white/30 focus:border-gold"
                         />
-                        <Button variant="ink" size="sm" onClick={handleApply}>
+                        <Button variant="dark" size="sm" onClick={() => { if (applyCoupon(code)) setCode(""); }}>
                           Apply
                         </Button>
                       </div>
-                      {couponError ? (
-                        <p className="mt-2 px-1 text-xs text-red-600">
-                          {couponError}
-                        </p>
-                      ) : (
-                        <p className="mt-2 px-1 text-xs text-muted">
-                          First order? Try <span className="font-semibold">{COUPON.code}</span>.
-                        </p>
-                      )}
+                      <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.06em] text-white/40">
+                        {couponError ? (
+                          <span className="text-alert">{couponError}</span>
+                        ) : (
+                          <>First order? Try {COUPON.code}.</>
+                        )}
+                      </p>
                     </div>
                   )}
 
                   <dl className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <dt className="text-muted">Subtotal</dt>
-                      <dd className="font-medium tabular-nums">
-                        {formatINR(subtotal)}
-                      </dd>
+                    <div className="flex justify-between text-white/60">
+                      <dt>Subtotal</dt>
+                      <dd className="tabular-nums text-white">{formatINR(subtotal)}</dd>
                     </div>
                     {discount > 0 && (
-                      <div className="flex justify-between text-accent">
+                      <div className="flex justify-between text-gold">
                         <dt>Discount ({COUPON.percent}%)</dt>
-                        <dd className="font-medium tabular-nums">
-                          −{formatINR(discount)}
-                        </dd>
+                        <dd className="tabular-nums">−{formatINR(discount)}</dd>
                       </div>
                     )}
-                    <div className="flex justify-between">
-                      <dt className="flex items-center gap-1.5 text-muted">
+                    <div className="flex justify-between text-white/60">
+                      <dt className="flex items-center gap-1.5">
                         <Truck size={14} /> Shipping
                       </dt>
-                      <dd className="font-semibold text-ink">Free</dd>
+                      <dd className="text-white">Free</dd>
                     </div>
-                    <div className="flex justify-between border-t border-line pt-3 text-base">
-                      <dt className="font-semibold text-ink">Total</dt>
-                      <dd className="font-display text-lg font-semibold tabular-nums text-ink">
+                    <div className="flex justify-between border-t border-white/10 pt-3">
+                      <dt className="font-display text-lg text-white">Total</dt>
+                      <dd className="font-display text-lg tabular-nums text-white">
                         {formatINR(total)}
                       </dd>
                     </div>
                   </dl>
 
-                  <Button
-                    onClick={() => setPlaced(true)}
-                    size="lg"
-                    className="mt-4 w-full"
-                  >
-                    Checkout · {formatINR(total)}
+                  <Button onClick={() => setPlaced(true)} variant="gold" size="lg" className="mt-4 w-full">
+                    Checkout — {formatINR(total)}
                     <ArrowRight size={18} />
                   </Button>
-                  <p className="mt-3 text-center text-xs text-muted">
-                    Demo checkout — no payment is taken. Free shipping across India.
+                  <p className="mt-3 text-center font-mono text-[0.64rem] uppercase tracking-[0.06em] text-white/35">
+                    Demo checkout · free shipping across India
                   </p>
                 </div>
               </>

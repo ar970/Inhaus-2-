@@ -1,83 +1,56 @@
 # INHAUS
 
-A premium, conversion-focused storefront for **INHAUS** — café-style specialty
-coffee concentrate. The brief: help a first-time visitor understand the product
-in under 10 seconds and complete a purchase in 30–60 seconds, with an aesthetic
-that blends Apple's simplicity, Araku's authenticity, and Liquid Death's clarity.
+A premium, conversion-focused storefront for **INHAUS** — cold-extracted
+specialty coffee concentrate. Dark, gold, editorial: "Café logic, re-engineered."
 
 ## Tech stack
 
 - **Next.js 16** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS v4** (CSS-first theming via `@theme`)
 - **motion** (Framer Motion) for subtle, reduced-motion-aware transitions
-- **lucide-react** for minimal line icons
-- Fonts: **Instrument Serif** (editorial display) + **Plus Jakarta Sans** (body) + **Space Mono** (labels/meta) via `next/font`
-- Aesthetic: **warm editorial × Gen-Z** — paper grain, earthy palette, marquee ticker, rotating seal stamps, mono captions, big serif type (reference DNA: Araku coffee)
+- **lucide-react** icons
+- Fonts: **Playfair Display** (serif display) + **Inter** (body) + **DM Mono** (labels) via `next/font`
+- Aesthetic: near-black `#0D0B0A` + gold `#D4AF37`, editorial manifesto, product "chapters"
 
 ## Getting started
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build (also type-checks + prerenders)
+npm run build    # production build (type-checks + prerenders)
 npm run start    # serve the production build
 npm run lint
 ```
 
-## How it's built
+## Structure
 
-The page is a single, scroll-friendly conversion funnel composed in
-`app/page.tsx`:
+`Hero → Manifesto (story) → Shop (3 product chapters) → Gold marquee → Footer`
 
-`Hero → Trust strip → Choose Your Fuel → Product showcase → How it works → Origin → Reviews → Final CTA`
+Plus a fixed **FOMO/urgency bar**, a functional **cart drawer** with toast
+feedback (add/qty/coupon `WELCOME10`/totals/`localStorage`/demo checkout), and a
+scroll-aware header.
 
-### Dynamic persona theming ("Choose Your Fuel")
+## Images
 
-Three personas — **Student / Creator / Professional** — each own an accent color
-(orange / pink / teal). Selecting one re-themes the **entire site**:
-
-- `PersonaProvider` (`components/providers/PersonaProvider.tsx`) writes the active
-  accent to CSS variables on `<html>` (`--accent-rgb`, `--accent`,
-  `--accent-contrast`).
-- Tailwind maps an `accent` color to those variables in `app/globals.css`, so
-  utilities like `bg-accent`, `text-accent`, and `bg-accent/10` recolor live and
-  animate via `transition-colors`.
-- The product showcase swaps its pouch art, headline, copy, and CTA with smooth
-  crossfades when the persona changes.
-
-### Functional cart (mock checkout)
-
-`CartProvider` (`components/providers/CartProvider.tsx`) is a self-contained cart:
-add/qty/remove, the `WELCOME10` coupon (10% off), live totals, `localStorage`
-persistence, and a slide-over drawer with a demo checkout (no real payment).
-Mobile gets a sticky Add-to-Cart bar.
-
-## Customization
+The hero/manifesto backgrounds and product shots reference **real remote URLs**
+(your store CDN + Unsplash) directly via `<img>`/CSS, so they render on your
+machine and on deploy with no config. Each product image has a graceful
+on-brand fallback if a URL is unavailable.
 
 | What | Where |
 | --- | --- |
-| Hero video (drop-in slot) | `public/media/README.md` + `components/sections/HeroBackground.tsx` |
-| Price / coupon / cups | `lib/product.ts` |
-| Persona copy, colors, CTAs | `lib/personas.ts` |
-| Reviews | `lib/reviews.ts` |
-| Brand neutrals, fonts, accent mapping | `app/globals.css` |
+| Product photos (per chapter) | `image` field in `lib/products.ts` (currently your `inhauscoffee.com` CDN) |
+| Hero background | `HERO_IMG` in `components/sections/Hero.tsx` |
+| Manifesto break image | `BREAKOUT_IMG` in `components/sections/Manifesto.tsx` |
+| Price / coupon | `lib/product.ts` |
+| Chapter copy, specs, stock status, theme colours | `lib/products.ts` |
 
-### Hero video
+> Note: this sandbox blocks outbound network, so preview screenshots taken here
+> show the dark layout without the remote photos. They load normally in a real
+> browser / deployment.
 
-The hero ships with a premium, asset-free animated scene and a clearly-marked
-video swap slot. Add a 5–7s muted loop to `public/media`, list the sources in
-`HeroBackground.tsx`, and it autoplays (muted, looping, inline, lazy) with the
-readability overlay already in place. See `public/media/README.md`.
-
-## Notes on performance & accessibility
+## Notes
 
 - Static prerendered page, code-split by Next, self-hosted/preloaded fonts.
-- Honors `prefers-reduced-motion` (via `MotionConfig reducedMotion="user"` and a
-  global CSS fallback).
-- Semantic landmarks, labelled controls, visible focus rings, per-persona
-  on-accent contrast colors, Product JSON-LD for SEO.
-
-## Visual QA
-
-`npm run shoot` drives Chromium (Playwright) to capture desktop + mobile
-screenshots of the key states into `screenshots/` (git-ignored).
+- Honors `prefers-reduced-motion`; semantic landmarks, labelled controls, focus rings, Product JSON-LD.
+- `npm run shoot` drives Chromium (Playwright) to capture screenshots into `screenshots/` (git-ignored).

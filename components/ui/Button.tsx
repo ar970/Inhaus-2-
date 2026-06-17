@@ -1,26 +1,23 @@
 import { cn } from "@/lib/utils";
 
-type Variant = "accent" | "ink" | "paper" | "outline" | "glass" | "link";
+type Variant = "solid" | "gold" | "outline" | "dark" | "link";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-pill font-semibold tracking-tight transition duration-300 ease-out active:scale-[0.98] select-none disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-[0.1em] transition-all duration-300 ease-out active:scale-[0.98] select-none disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap cursor-pointer";
 
 const variants: Record<Exclude<Variant, "link">, string> = {
-  accent:
-    "bg-accent text-[var(--accent-contrast)] shadow-[0_12px_34px_-14px_rgb(var(--accent-rgb)/0.75)] hover:brightness-[1.05] hover:-translate-y-0.5",
-  ink: "bg-ink text-cream hover:bg-espresso hover:-translate-y-0.5",
-  paper: "bg-cream text-ink hover:bg-white hover:-translate-y-0.5",
-  outline:
-    "border border-ink/25 text-ink hover:bg-ink hover:text-cream hover:border-ink",
-  glass:
-    "bg-cream/10 text-cream border border-cream/25 backdrop-blur-md hover:bg-cream/20 hover:-translate-y-0.5",
+  solid:
+    "bg-white text-dark hover:bg-gold hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(212,175,55,0.28)]",
+  gold: "bg-gold text-dark hover:brightness-110 hover:-translate-y-0.5",
+  outline: "border border-white/25 text-white hover:bg-white hover:text-dark",
+  dark: "border border-white/20 bg-dark text-white hover:bg-white hover:text-dark",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-10 px-5 text-sm",
-  md: "h-12 px-6 text-[15px]",
-  lg: "h-14 px-8 text-base",
+  sm: "h-10 px-5 text-[0.7rem]",
+  md: "h-12 px-7 text-[0.78rem]",
+  lg: "h-14 px-9 text-[0.82rem]",
 };
 
 export interface ButtonProps
@@ -30,7 +27,7 @@ export interface ButtonProps
 }
 
 export function Button({
-  variant = "accent",
+  variant = "solid",
   size = "md",
   className,
   ...props
@@ -39,7 +36,7 @@ export function Button({
     return (
       <button
         className={cn(
-          "group inline-flex items-center gap-2 font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4 transition-colors duration-300 hover:decoration-ink",
+          "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-white underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-gold",
           className,
         )}
         {...props}

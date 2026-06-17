@@ -1,63 +1,98 @@
-import { AtSign, Camera } from "lucide-react";
-
-const GROUPS = [
-  { title: "Shop", links: ["Study Fuel", "Creator Fuel", "Work Flow", "Gift a pouch"] },
-  { title: "Company", links: ["Our story", "Sourcing", "Sustainability", "Contact"] },
-  { title: "Help", links: ["How it works", "Shipping & returns", "FAQs", "Track order"] },
+const COLS = [
+  {
+    title: "Shop",
+    links: [
+      ["Concentrate", "#shop"],
+      ["Study Fuel", "#shop"],
+      ["Creator Fuel", "#shop"],
+      ["Work Flow", "#shop"],
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      ["Our story", "#manifesto"],
+      ["Sourcing", "#"],
+      ["Sustainability", "#"],
+      ["Stockists", "#"],
+    ],
+  },
+  {
+    title: "Help",
+    links: [
+      ["FAQ", "#"],
+      ["Brew guide", "#"],
+      ["Shipping & returns", "#"],
+      ["admin@inhauscoffee.com", "mailto:admin@inhauscoffee.com"],
+    ],
+  },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-cream/75">
-      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-7">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
-          <div className="col-span-2">
-            <div className="font-display text-3xl tracking-tight text-cream">INHAUS</div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/55">
-              Café-style specialty coffee concentrate. No machine, no café run —
-              just pour, stir, and sip.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="#"
-                aria-label="INHAUS on Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 transition-colors hover:border-accent hover:text-accent"
-              >
-                <Camera size={18} />
-              </a>
-              <a
-                href="#"
-                aria-label="INHAUS on X"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 transition-colors hover:border-accent hover:text-accent"
-              >
-                <AtSign size={18} />
-              </a>
-            </div>
+    <footer className="border-t border-white/5 bg-deep px-5 pb-10 pt-20 sm:px-[4vw]">
+      <div className="grid grid-cols-2 gap-10 border-b border-white/10 pb-14 md:grid-cols-4 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="col-span-2 md:col-span-4 lg:col-span-1">
+          <div className="font-display text-2xl font-semibold uppercase tracking-[0.08em] text-white">
+            INHAUS
           </div>
-
-          {GROUPS.map((g) => (
-            <div key={g.title}>
-              <h3 className="label text-cream">{g.title}</h3>
-              <ul className="mt-4 space-y-3 text-sm">
-                {g.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-cream/55 transition-colors hover:text-cream">
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <p className="mt-4 max-w-[280px] text-sm leading-relaxed text-white/50">
+            Café-style coffee concentrate. Cold-extracted with care, poured at
+            home.
+          </p>
+          <div className="mt-6 flex gap-3">
+            {[
+              ["IG", "https://www.instagram.com/inhauscoffeee"],
+              ["LI", "https://www.linkedin.com/company/inhaus-coffee/"],
+            ].map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center border border-white/15 font-mono text-xs text-white/50 transition-colors hover:border-gold hover:text-gold"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="label !tracking-[0.12em] text-cream/45">
-            Crafted with specialty Arabica · Chikmagalur × Brewcaso
-          </p>
-          <p className="label !tracking-[0.12em] text-cream/45">
-            © {new Date().getFullYear()} INHAUS — free shipping across India
-          </p>
+        {COLS.map((col) => (
+          <div key={col.title}>
+            <p className="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-white/30">
+              {col.title}
+            </p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {col.links.map(([label, href]) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    className="text-sm text-white/50 transition-colors hover:text-gold"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
+        <p className="font-mono text-[0.7rem] tracking-[0.08em] text-white/30">
+          © {new Date().getFullYear()} INHAUS · FSSAI Lic. No. 21526030000986
+        </p>
+        <div className="flex gap-6">
+          {["Privacy", "Terms", "Shipping Policy"].map((l) => (
+            <a
+              key={l}
+              href="#"
+              className="font-mono text-[0.7rem] tracking-[0.08em] text-white/30 transition-colors hover:text-white/60"
+            >
+              {l}
+            </a>
+          ))}
         </div>
       </div>
     </footer>

@@ -31,14 +31,14 @@ const COLS = [
 export function Footer() {
   return (
     <footer className="border-t border-white/5 bg-deep px-5 pb-10 pt-20 sm:px-[4vw]">
-      <div className="grid grid-cols-2 gap-10 border-b border-white/10 pb-14 md:grid-cols-4 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="grid grid-cols-2 gap-10 border-b border-white/8 pb-14 md:grid-cols-4 lg:grid-cols-[2fr_1fr_1fr_1fr]">
         <div className="col-span-2 md:col-span-4 lg:col-span-1">
-          <div className="font-display text-2xl font-semibold uppercase tracking-[0.08em] text-white">
-            INHAUS
+          <div className="font-display text-[1.5rem] italic text-white">
+            INHAUS.
           </div>
-          <p className="mt-4 max-w-[280px] text-sm leading-relaxed text-white/50">
-            Café-style coffee concentrate. Cold-extracted with care, poured at
-            home.
+          <p className="mt-4 max-w-[260px] text-sm font-light leading-relaxed text-white/40">
+            Café-quality coffee concentrate. Cold-extracted, bottled, shipped to
+            your door.
           </p>
           <div className="mt-6 flex gap-3">
             {[
@@ -50,7 +50,7 @@ export function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center border border-white/15 font-mono text-xs text-white/50 transition-colors hover:border-gold hover:text-gold"
+                className="flex h-8 w-8 items-center justify-center border border-white/10 font-mono text-[0.65rem] text-white/40 transition-colors hover:border-gold hover:text-gold"
               >
                 {label}
               </a>
@@ -60,7 +60,7 @@ export function Footer() {
 
         {COLS.map((col) => (
           <div key={col.title}>
-            <p className="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-white/30">
+            <p className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/25">
               {col.title}
             </p>
             <ul className="mt-5 flex flex-col gap-3">
@@ -68,7 +68,7 @@ export function Footer() {
                 <li key={label}>
                   <a
                     href={href}
-                    className="text-sm text-white/50 transition-colors hover:text-gold"
+                    className="text-sm font-light text-white/45 transition-colors hover:text-white"
                   >
                     {label}
                   </a>
@@ -80,7 +80,7 @@ export function Footer() {
       </div>
 
       <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
-        <p className="font-mono text-[0.7rem] tracking-[0.08em] text-white/30">
+        <p className="font-mono text-[0.65rem] tracking-[0.08em] text-white/25">
           © {new Date().getFullYear()} INHAUS · FSSAI Lic. No. 21526030000986
         </p>
         <div className="flex gap-6">
@@ -88,7 +88,7 @@ export function Footer() {
             <a
               key={l}
               href="#"
-              className="font-mono text-[0.7rem] tracking-[0.08em] text-white/30 transition-colors hover:text-white/60"
+              className="font-mono text-[0.65rem] tracking-[0.08em] text-white/25 transition-colors hover:text-white/55"
             >
               {l}
             </a>

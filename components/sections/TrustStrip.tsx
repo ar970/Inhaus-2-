@@ -9,18 +9,18 @@ const STATS = [
 
 export function TrustStrip() {
   return (
-    <div className="border-y border-white/5 bg-mid">
-      <div className="grid grid-cols-2 divide-x divide-white/5 md:grid-cols-4">
+    <div className="border-y border-dark/10 bg-cream">
+      <div className="grid grid-cols-2 divide-x divide-dark/10 md:grid-cols-4">
         {STATS.map((s, i) => (
           <Reveal
             key={s.label}
             delay={i * 0.07}
-            className="flex flex-col items-center py-9 text-center"
+            className="flex flex-col items-center py-10 text-center"
           >
-            <span className="font-display text-[2.4rem] font-normal leading-none text-gold">
+            <span className="font-display text-[2.5rem] font-light italic leading-none text-gold">
               {s.value}
             </span>
-            <span className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white/35">
+            <span className="mt-2.5 font-mono text-[0.63rem] uppercase tracking-[0.22em] text-dark/40">
               {s.label}
             </span>
           </Reveal>

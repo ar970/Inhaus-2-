@@ -5,21 +5,17 @@ export interface Spec {
 
 export interface Chapter {
   id: string;
-  index: string; // "01"
-  name: string; // "Study Fuel."
+  index: string;
+  name: string;
   lead: string;
   specs: Spec[];
-  batch: string; // "Batch #402"
-  status: string; // "89% Claimed"
-  statusTone: "alert" | "gold"; // colour of status + progress
-  progress: number; // 0-100
-  /** glow colour behind the bottle */
+  batch: string;
+  status: string;
+  statusTone: "alert" | "gold";
+  progress: number;
   glow: string;
-  /** product-name colour */
   titleColor: string;
-  /** background tint for the chapter */
   bg: string;
-  /** product image (real store CDN) */
   image: string;
   reverse?: boolean;
 }
@@ -31,12 +27,12 @@ export const CHAPTERS: Chapter[] = [
     id: "study-fuel",
     index: "01",
     name: "Study Fuel.",
-    lead: "Built specifically for the 2:17 AM grind. When the deadline is looming and focus is non-negotiable, this is your secret weapon.",
+    lead: "Dark roast for long nights. Sustained focus, no jitters, no crashes. This is the one you reach for at 2am.",
     specs: [
-      { label: "The Profile", value: "Dark Cocoa & Toasted Nuts" },
-      { label: "The Vibe", value: "Sustained, jitter-free focus." },
-      { label: "The Yield", value: "~20 cups per bottle (₹25/cup)" },
-      { label: "The Roast", value: "Medium-Dark, low acidity." },
+      { label: "Flavour", value: "Dark Cocoa · Toasted Nuts" },
+      { label: "Effect", value: "Sustained, jitter-free focus" },
+      { label: "Yield", value: "~20 cups · ₹25 each" },
+      { label: "Roast", value: "Medium-dark · low acidity" },
     ],
     batch: "Batch #402",
     status: "89% Claimed",
@@ -51,19 +47,19 @@ export const CHAPTERS: Chapter[] = [
     id: "creator-fuel",
     index: "02",
     name: "Creator Fuel.",
-    lead: "For the designers, editors, and builders. Poured fast so you never have to step away from the canvas to get your fix.",
+    lead: "Light roast, bright energy. For designers, editors, and builders who pour and get straight back to work.",
     specs: [
-      { label: "The Profile", value: "Wild Berries, Honey, Citrus" },
-      { label: "The Vibe", value: "Bright, creative energy." },
-      { label: "The Yield", value: "~20 cups per bottle (₹25/cup)" },
-      { label: "The Roast", value: "Light-Medium, crisp clarity." },
+      { label: "Flavour", value: "Wild Berries · Honey · Citrus" },
+      { label: "Effect", value: "Bright, clean energy" },
+      { label: "Yield", value: "~20 cups · ₹25 each" },
+      { label: "Roast", value: "Light-medium · crisp clarity" },
     ],
     batch: "Batch #403",
     status: "Restocked Today",
     statusTone: "gold",
     progress: 15,
     glow: "#C8A96E",
-    titleColor: "#D4AF37",
+    titleColor: "#C47E3F",
     bg: "#17110C",
     image: `${CDN}/logo%20c.jpeg`,
     reverse: true,
@@ -72,12 +68,12 @@ export const CHAPTERS: Chapter[] = [
     id: "work-flow",
     index: "03",
     name: "Work Flow.",
-    lead: "The executive standard. Skip the office machine — premium, cold-extracted concentrate for people who ship, build, and execute.",
+    lead: "The executive standard. Rich, heavy-bodied, no compromise. Skip the office machine — for good.",
     specs: [
-      { label: "The Profile", value: "Rich Caramel & Dark Chocolate" },
-      { label: "The Vibe", value: "Bold, unapologetic momentum." },
-      { label: "The Yield", value: "~20 cups per bottle (₹25/cup)" },
-      { label: "The Roast", value: "Dark, heavy body." },
+      { label: "Flavour", value: "Caramel · Dark Chocolate" },
+      { label: "Effect", value: "Bold, full-body momentum" },
+      { label: "Yield", value: "~20 cups · ₹25 each" },
+      { label: "Roast", value: "Dark · heavy body" },
     ],
     batch: "Batch #404",
     status: "Selling Fast",

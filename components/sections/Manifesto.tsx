@@ -4,9 +4,17 @@ import { ScrollButton } from "@/components/ui/ScrollButton";
 const BREAKOUT_IMG =
   "https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?auto=format&fit=crop&q=80&w=2000";
 
-function Title({ children }: { children: React.ReactNode }) {
+function DarkTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-display text-[clamp(2.3rem,5vw,4rem)] font-normal leading-[1.1] text-white lg:sticky lg:top-28">
+    <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-light italic leading-[1.1] text-white lg:sticky lg:top-28">
+      {children}
+    </h2>
+  );
+}
+
+function LightTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-light italic leading-[1.1] text-dark lg:sticky lg:top-28">
       {children}
     </h2>
   );
@@ -14,27 +22,19 @@ function Title({ children }: { children: React.ReactNode }) {
 
 export function Manifesto() {
   return (
-    <div id="manifesto" className="relative z-20 bg-dark">
-      {/* 01 */}
-      <section className="grid gap-10 border-b border-white/5 px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
-        <Title>The café queue is a trap.</Title>
-        <Reveal className="space-y-7 text-[1.05rem] font-light leading-[1.8] text-white/80">
+    <div id="manifesto" className="relative z-20">
+      {/* 01 — dark */}
+      <section className="grid gap-10 border-b border-white/5 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
+        <DarkTitle>The café queue is a trap.</DarkTitle>
+        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/70">
           <p>
-            INHAUS started with a simple frustration. You sit down at your desk.
-            You finally get into the flow state. And then, the caffeine wears
-            off.
+            You sit down, get into the flow, and the caffeine wears off. Two
+            choices: walk to a café, lose 30 minutes, and spend ₹250. Or drink
+            the burnt sludge from the office machine.
           </p>
           <p>
-            You have two choices. Break your momentum to walk to a café, stand in
-            line, and pay ₹250 for a latte.{" "}
-            <strong className="font-semibold text-white">
-              Or suffer through terrible, burnt instant coffee in the breakroom.
-            </strong>
-          </p>
-          <p>
-            Traditional coffee culture forces you to choose between quality and
-            convenience. If you want great coffee, you sacrifice your time. If you
-            want it fast, you drink garbage.
+            Good coffee has always required sacrifice — your time, your wallet,
+            or both. We decided that was a design flaw worth fixing.
           </p>
         </Reveal>
       </section>
@@ -51,53 +51,45 @@ export function Manifesto() {
         aria-hidden
       />
 
-      {/* 02 */}
-      <section className="grid gap-10 border-b border-white/5 px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
-        <Title>
-          14 months of <em className="italic text-gold">obsessive extraction.</em>
-        </Title>
-        <Reveal className="space-y-7 text-[1.05rem] font-light leading-[1.8] text-white/80">
+      {/* 02 — cream */}
+      <section className="grid gap-10 border-b border-dark/8 bg-cream px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
+        <LightTitle>
+          14 months of{" "}
+          <em className="not-italic text-gold">obsessive extraction.</em>
+        </LightTitle>
+        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-dark/70">
           <p>
-            We didn&apos;t want to make another instant coffee. Dehydrating
-            coffee strips it of its complex oils and aromatics. That&apos;s why
-            instant coffee tastes like ash.
+            Dehydrating coffee strips the oils and aromatics that make great
+            espresso taste great. That&apos;s why instant coffee tastes like ash.
+            We took a different route.
           </p>
           <p>
-            Instead, we looked to the science of cold-extraction. By slowly
-            brewing 100% specialty Arabica beans over hours at a low temperature,
-            we captured the exact flavour profile of a commercial espresso
-            machine.
+            Cold-extraction brews 100% specialty Arabica over many hours at
+            low temperature — locking in the full flavour profile of a
+            commercial machine. We bottle it raw. No preservatives, no sugar,
+            no stabilisers.
           </p>
-          <p>
-            <strong className="font-semibold text-white">
-              No heat. No bitterness. Just the pure, concentrated soul of the
-              bean.
-            </strong>
-          </p>
-          <p>
-            We bottle it raw — no preservatives, no sugar, no stabilizers. Pour
-            an ounce, add water or milk, and it doesn&apos;t taste{" "}
-            <em className="italic">like</em> café coffee. It{" "}
-            <em className="italic text-gold">is</em> café coffee.
+          <p className="font-medium text-dark">
+            Pour an ounce. Add water or milk. It doesn&apos;t taste{" "}
+            <em>like</em> café coffee — it <em className="text-gold">is</em>{" "}
+            café coffee.
           </p>
         </Reveal>
       </section>
 
-      {/* 03 */}
-      <section className="grid items-center gap-10 px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
-        <Title>
-          Made for the <br className="hidden lg:block" />
+      {/* 03 — dark */}
+      <section className="grid items-center gap-10 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
+        <DarkTitle>
+          Made for the{" "}
+          <br className="hidden lg:block" />
           builders.
-        </Title>
-        <Reveal className="space-y-7 text-[1.05rem] font-light leading-[1.8] text-white/80">
+        </DarkTitle>
+        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/70">
           <p>
-            We don&apos;t care about latte art or pretentious brewing ceremonies.
-            We care about execution.
-          </p>
-          <p>
-            INHAUS is for the people who ship code, build businesses, edit film,
-            and pull all-nighters. It sits quietly on your desk or in your fridge,
-            ready to give you a tactical advantage in exactly 60 seconds.
+            We don&apos;t care about latte art or brewing ceremonies. INHAUS is
+            for the people who ship code, edit film, build businesses, and pull
+            all-nighters. It sits quietly in your fridge and gives you a
+            tactical advantage in 60 seconds.
           </p>
           <ScrollButton targetId="shop" className="mt-2">
             Shop The Reserve

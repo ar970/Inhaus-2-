@@ -1,32 +1,33 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   INHAUS — Dark Reserve
-   Near-black + gold luxury. Playfair Display / Inter / DM Mono.
+   INHAUS
+   Dark espresso + warm cream + coffee amber. Cormorant / Space Grotesk / DM Mono.
    ========================================================================= */
 
 @theme {
-  --color-dark: #0d0b0a;
-  --color-mid: #1a1612;
-  --color-card: #15110d;
-  --color-deep: #050404;
-  --color-gold: #d4af37;
+  --color-dark: #0a0907;
+  --color-mid: #161009;
+  --color-card: #1e1510;
+  --color-deep: #050402;
+  --color-cream: #f3ede5;
+  --color-stone: #e8e0d4;
+  --color-gold: #c47e3f;
   --color-alert: #e63946;
-  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line: rgba(255, 255, 255, 0.07);
 }
 
 @theme inline {
-  --font-display: var(--font-playfair);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-dm-mono);
 
-  /* gold accent (static) */
-  --color-accent: var(--accent);
+  --color-accent: var(--color-gold);
 }
 
 :root {
-  --accent: #d4af37;
-  --accent-contrast: #0d0b0a;
+  --accent: #c47e3f;
+  --accent-contrast: #0a0907;
 }
 
 * {
@@ -40,11 +41,10 @@ html {
 
 body {
   background: var(--color-dark);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.82);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  /* room for the fixed bottom urgency bar */
   padding-bottom: 64px;
 }
 
@@ -60,11 +60,13 @@ body {
 .font-mono {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
+
+/* eyebrow on dark backgrounds */
 .eyebrow {
   font-family: var(--font-mono), monospace;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  font-size: 0.68rem;
   font-weight: 500;
   color: var(--color-gold);
 }
@@ -93,7 +95,7 @@ body {
   }
 }
 .animate-scroll-x {
-  animation: scroll-x var(--marquee-duration, 26s) linear infinite;
+  animation: scroll-x var(--marquee-duration, 28s) linear infinite;
 }
 
 @keyframes pulse-alert {

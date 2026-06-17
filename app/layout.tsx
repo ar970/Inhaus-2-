@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, DM_Mono } from "next/font/google";
+import { Cormorant_Garamond, Space_Grotesk, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers/Providers";
 import { Header } from "@/components/layout/Header";
@@ -8,18 +8,18 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { FomoBar } from "@/components/layout/FomoBar";
 import { Toast } from "@/components/ui/Toast";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
-  variable: "--font-playfair",
+  variable: "--font-cormorant",
   display: "swap",
 });
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "900"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0b0a",
+  themeColor: "#0a0907",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -69,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${dmMono.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${spaceGrotesk.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <Providers>

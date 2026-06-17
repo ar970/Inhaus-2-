@@ -4,32 +4,26 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-mid px-5 py-28 text-center sm:px-[5vw] lg:py-40">
+    <section className="relative overflow-hidden bg-dark px-5 py-28 text-center sm:px-[5vw] lg:py-40">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-[120px]"
-        style={{ background: "#D4AF37" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.08] blur-[100px]"
+        style={{ background: "#C47E3F" }}
         aria-hidden
       />
 
-      <Reveal className="relative z-10 mx-auto max-w-3xl">
-        <span className="eyebrow block">Your first bottle is waiting</span>
-        <h2 className="mt-6 font-display text-[clamp(2.6rem,6vw,5.5rem)] font-normal leading-[1.05] text-white">
-          The best coffee decision
+      <Reveal className="relative z-10 mx-auto max-w-2xl">
+        <span className="eyebrow block">Start today</span>
+        <h2 className="mt-7 font-display text-[clamp(2.8rem,7vw,6rem)] font-light italic leading-[0.95] text-white">
+          Pour better.
           <br />
-          <em className="font-normal italic text-gold">you&apos;ll ever make.</em>
+          <span className="text-gold">Every morning.</span>
         </h2>
-        <p className="mx-auto mt-7 max-w-lg text-[1.05rem] font-light leading-relaxed text-white/65">
-          ₹25 a cup. 60 seconds to pour. No café queue. No burnt office
-          coffee. Use code{" "}
+        <p className="mx-auto mt-7 max-w-xs text-sm font-light leading-relaxed text-white/45">
+          Use{" "}
           <span className="font-mono font-medium text-gold">{COUPON.code}</span>{" "}
-          for {COUPON.percent}% off your first order.
+          for {COUPON.percent}% off your first order. Free shipping across India.
         </p>
-        <ScrollButton
-          targetId="shop"
-          variant="gold"
-          size="lg"
-          className="mt-10"
-        >
+        <ScrollButton targetId="shop" variant="gold" size="lg" className="mt-10">
           Shop The Reserve
         </ScrollButton>
       </Reveal>

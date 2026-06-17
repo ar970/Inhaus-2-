@@ -10,60 +10,68 @@ const HERO_IMG =
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.14, delayChildren: 0.15 } },
 };
 const item: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE } },
 };
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-center px-5 sm:px-[5vw]"
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(13,11,10,0.45), var(--color-dark)), url('${HERO_IMG}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative flex min-h-[100svh] flex-col justify-end px-5 pb-20 sm:px-[5vw] sm:pb-28"
     >
+      {/* full-bleed photo */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={HERO_IMG}
+          alt=""
+          aria-hidden
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/55 to-dark/20" />
+      </div>
+
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-[1000px] pt-20"
+        className="relative z-10 max-w-[920px]"
       >
-        <motion.span variants={item} className="eyebrow block">
-          Extract The Extraordinary
+        <motion.span
+          variants={item}
+          className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-white/40"
+        >
+          Cold-extracted · Chikmagalur Arabica · 200ml
         </motion.span>
 
         <motion.h1
           variants={item}
-          className="mt-7 font-display text-[clamp(3.2rem,8vw,8rem)] font-bold leading-[0.95] tracking-[-0.02em] text-white"
+          className="mt-5 font-display text-[clamp(3.8rem,9.5vw,9.5rem)] font-light italic leading-[0.9] tracking-tight text-white"
         >
-          Café logic,
-          <br />
-          <em className="font-normal italic text-gold">re-engineered.</em>
+          Café in
+          <br />a bottle.
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="mt-7 max-w-xl text-[clamp(1.05rem,2vw,1.35rem)] font-light leading-relaxed text-white/85"
+          className="mt-7 max-w-sm text-[1rem] font-light leading-relaxed text-white/55"
         >
-          We spent 14 months perfecting the cold-extraction of 100% Arabica
-          beans. No machines. No waiting. Just pour, mix, and dominate your day.
+          60-second pour. No machine needed. ₹25 a cup.
         </motion.p>
 
         <motion.div
           variants={item}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="mt-9 flex flex-wrap items-center gap-5"
         >
           <Button size="lg" onClick={() => scrollToId("shop")}>
-            Shop The Reserve
+            Shop Now
           </Button>
           <Button variant="link" onClick={() => scrollToId("manifesto")}>
-            Read the Manifesto
+            Our story →
           </Button>
         </motion.div>
       </motion.div>

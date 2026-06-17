@@ -1,7 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
+import { TrustStrip } from "@/components/sections/TrustStrip";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Shop } from "@/components/sections/Shop";
+import { Reviews } from "@/components/sections/Reviews";
 import { MassiveMarquee } from "@/components/sections/MassiveMarquee";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PRODUCT } from "@/lib/product";
 
 const productJsonLd = {
@@ -27,9 +30,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <Hero />
+      <TrustStrip />
       <Manifesto />
       <Shop />
+      <Reviews />
       <MassiveMarquee />
+      <FinalCTA />
     </>
   );
 }

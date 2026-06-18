@@ -66,7 +66,7 @@ function Chapter({ c }: { c: ChapterType }) {
       )}
     >
       <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/30">
-        {`Identity ${c.index} // 200ml`}
+        {`Edition ${c.index} of 3 · Same concentrate · Different identity`}
       </span>
       <h2
         className="mt-5 font-display text-[clamp(2.8rem,5vw,5.5rem)] font-light italic leading-[0.92]"

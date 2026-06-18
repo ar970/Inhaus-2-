@@ -95,11 +95,11 @@ export function Manifesto() {
             Europe and Japan. That is where INHAUS begins.
           </p>
           <p>
-            Our supplier, Brewcasso, sources single-origin Arabica directly from
-            farms at 4,300 feet above sea level. Cold-extraction then brews those
-            beans over many hours at low temperature — not spray-dried, not
-            freeze-dried, not instant. Real brewed liquid, locked at peak
-            extraction to preserve the full flavour profile:{" "}
+            We source single-origin Arabica directly from shade-grown farms at
+            4,300 feet above sea level. Cold-extraction brews those beans over
+            many hours at low temperature — not spray-dried, not freeze-dried,
+            not instant. Real brewed liquid, locked at peak extraction to
+            preserve the full flavour profile:{" "}
             <strong className="font-medium text-dark">
               naturally nutty and bitter-sweet, with dark chocolate notes
               and a clean finish.

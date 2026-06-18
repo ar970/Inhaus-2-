@@ -12,7 +12,7 @@ export function ComparisonSection() {
         <em className="not-italic text-gold">Better than both.</em>
       </h2>
 
-      <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/85">
+      <Reveal className="space-y-6 text-[1rem] font-normal leading-[1.85] text-white/85">
         <p>
           Instant coffee is spray-dried powder. The process strips the oils,
           aromatics, and character that make Arabica taste like anything worth

@@ -49,7 +49,7 @@ export function Reviews() {
   return (
     <section className="bg-cream px-5 py-24 sm:px-[5vw] lg:py-36">
       <Reveal className="mb-14">
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-dark/35">
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-gold">
           Reviews
         </span>
         <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.5rem)] font-light italic leading-tight text-dark">
@@ -62,7 +62,7 @@ export function Reviews() {
           <Reveal
             key={r.name}
             delay={i * 0.06}
-            className="flex flex-col gap-5 bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.04)]"
+            className="flex flex-col gap-5 bg-[#faf6f0] p-7 shadow-[0_1px_4px_rgba(100,60,20,0.07),0_4px_20px_rgba(100,60,20,0.05)]"
           >
             <div className="flex gap-0.5">
               {Array.from({ length: r.stars }).map((_, k) => (
@@ -71,7 +71,7 @@ export function Reviews() {
                 </span>
               ))}
             </div>
-            <p className="flex-1 text-[0.95rem] font-light leading-relaxed text-dark/85">
+            <p className="flex-1 text-[0.95rem] font-normal leading-relaxed text-dark/85">
               &ldquo;{r.quote}&rdquo;
             </p>
             <div className="border-t border-dark/8 pt-4">

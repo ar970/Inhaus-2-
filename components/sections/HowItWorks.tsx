@@ -34,10 +34,10 @@ export function HowItWorks() {
     >
       {/* Ambient glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[60vh] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[180px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[70vh] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(196,126,63,0.07) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(196,126,63,0.14) 0%, rgba(160,90,30,0.05) 55%, transparent 75%)",
         }}
         aria-hidden
       />
@@ -81,7 +81,7 @@ export function HowItWorks() {
                     <h3 className="mb-2 font-display text-[1.55rem] font-light italic text-white">
                       {step.title}
                     </h3>
-                    <p className="text-[0.95rem] font-light leading-[1.8] text-white/82">
+                    <p className="text-[0.95rem] font-normal leading-[1.8] text-white/82">
                       {step.body}
                     </p>
                   </div>

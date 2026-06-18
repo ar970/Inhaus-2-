@@ -128,22 +128,22 @@ export function Hero() {
           className="h-[112%] w-full object-cover object-center"
           style={{ scale: reduce ? 1.06 : bgScale }}
         />
-        {/* warm amber-dark wash, not cold black */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#140b05]/88 via-[#0d0705]/78 to-[#100806]/94" />
-        {/* morning-light radial glow */}
+        {/* warm amber-dark wash — lighter so the image breathes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#140b05]/68 via-[#0d0705]/60 to-[#100806]/82" />
+        {/* morning-light radial glow — stronger, centred higher */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[42%] h-[70vh] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]"
+          className="pointer-events-none absolute left-1/2 top-[35%] h-[80vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(196,126,63,0.24) 0%, rgba(180,100,30,0.08) 48%, transparent 72%)",
+              "radial-gradient(ellipse, rgba(196,126,63,0.42) 0%, rgba(180,100,30,0.18) 45%, transparent 70%)",
           }}
           aria-hidden
         />
-        {/* edge vignette for focus */}
+        {/* soft edge vignette — reduced so it doesn't cold-crush corners */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            boxShadow: "inset 0 0 220px 60px rgba(8,5,3,0.85)",
+            boxShadow: "inset 0 0 160px 40px rgba(8,5,3,0.60)",
           }}
           aria-hidden
         />
@@ -215,7 +215,7 @@ export function Hero() {
         {/* Sub-copy — warm, sensory */}
         <motion.p
           variants={item}
-          className="mx-auto mt-8 max-w-[440px] text-[1.05rem] font-light leading-[1.85] text-white/85"
+          className="mx-auto mt-8 max-w-[440px] text-[1.05rem] font-normal leading-[1.85] text-white/85"
         >
           Mountain-grown Arabica from the Western Ghats — notes of dark
           cocoa and toasted nuts, poured in 60 seconds.

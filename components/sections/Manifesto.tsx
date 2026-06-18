@@ -32,9 +32,14 @@ export function Manifesto() {
     <div id="manifesto" className="relative z-20">
 
       {/* 01 — dark — The problem */}
-      <section className="grid gap-10 border-b border-white/5 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
+      <section className="relative grid gap-10 border-b border-white/5 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
+        <div
+          className="pointer-events-none absolute right-0 top-0 h-[60%] w-[40%] rounded-full blur-[160px]"
+          style={{ background: "radial-gradient(ellipse, rgba(196,126,63,0.12) 0%, transparent 70%)" }}
+          aria-hidden
+        />
         <DarkTitle>The café queue is a trap.</DarkTitle>
-        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/85">
+        <Reveal className="space-y-6 text-[1rem] font-normal leading-[1.85] text-white/85">
           <p>
             You lock in. The flow hits. Then the caffeine drops. Two choices:
             break everything, walk 10 minutes to the nearest café, spend ₹250,
@@ -85,7 +90,7 @@ export function Manifesto() {
           </dl>
         </div>
 
-        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-dark/85">
+        <Reveal className="space-y-6 text-[1rem] font-normal leading-[1.85] text-dark/90">
           <p>
             Chikmagalur, Karnataka. India&apos;s oldest coffee region — where a
             17th-century Sufi saint named Baba Budan smuggled seven coffee seeds

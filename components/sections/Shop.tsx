@@ -74,7 +74,7 @@ function Chapter({ c }: { c: ChapterType }) {
       >
         {c.name}
       </h2>
-      <p className="mt-5 max-w-md text-[0.97rem] font-light leading-relaxed text-white/85">
+      <p className="mt-5 max-w-md text-[0.97rem] font-normal leading-relaxed text-white/85">
         {c.lead}
       </p>
 

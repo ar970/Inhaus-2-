@@ -67,12 +67,26 @@ export function Hero() {
           variants={item}
           className="mt-9 flex flex-wrap items-center gap-5"
         >
-          <Button size="lg" onClick={() => scrollToId("shop")}>
-            Shop Now
+          <Button variant="gold" size="xl" onClick={() => scrollToId("shop")}>
+            Shop Now — ₹499
           </Button>
           <Button variant="link" onClick={() => scrollToId("manifesto")}>
             Our story →
           </Button>
+        </motion.div>
+
+        <motion.div
+          variants={item}
+          className="mt-5 flex flex-wrap gap-x-6 gap-y-1.5"
+        >
+          {["20 cups per bottle", "₹25 per cup", "Free shipping", "1,200+ orders"].map((t) => (
+            <span
+              key={t}
+              className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-white/30"
+            >
+              {t}
+            </span>
+          ))}
         </motion.div>
       </motion.div>
     </section>

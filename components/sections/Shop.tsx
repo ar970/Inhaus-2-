@@ -100,14 +100,30 @@ function Chapter({ c }: { c: ChapterType }) {
             style={{ width: `${c.progress}%`, background: statusColor }}
           />
         </div>
+
+        <div className="mb-4 flex items-baseline justify-between">
+          <span className="font-display text-[2rem] italic leading-none text-white">
+            {formatINR(PRODUCT.price)}
+          </span>
+          <span className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/38">
+            ~₹{PRODUCT.perCup} per cup
+          </span>
+        </div>
+
         <Button
           variant={c.statusTone === "gold" ? "gold" : "solid"}
-          size="lg"
+          size="xl"
           className="w-full"
           onClick={() => addItem(label)}
         >
-          Add To Cart — {formatINR(PRODUCT.price)}
+          Add To Cart
         </Button>
+
+        <div className="mt-3 flex justify-center gap-x-5 font-mono text-[0.57rem] uppercase tracking-[0.12em] text-white/25">
+          <span>Free shipping</span>
+          <span>Ships today</span>
+          <span>No subscription</span>
+        </div>
       </div>
     </div>
   );

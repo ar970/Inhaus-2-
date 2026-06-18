@@ -9,12 +9,14 @@ export function IntroOverlay() {
   const [visible, setVisible] = useState(false);
   const [out, setOut] = useState(false);
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setVisible(true);
     const t = setTimeout(() => setOut(true), 2500);
     return () => clearTimeout(t);
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   return (
     <AnimatePresence>

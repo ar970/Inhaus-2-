@@ -30,7 +30,7 @@ interface CartContextValue {
   toast: string | null;
   open: () => void;
   close: () => void;
-  addItem: (label: string, qty?: number) => void;
+  addItem: (label: string, qty?: number, price?: number) => void;
   setQty: (id: string, qty: number) => void;
   removeItem: (id: string) => void;
   applyCoupon: (code: string) => boolean;
@@ -87,7 +87,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const addItem = useCallback(
-    (label: string, qty: number = 1) => {
+    (label: string, qty: number = 1, price: number = PRODUCT.price) => {
       const id = slug(label);
       const add = Math.max(1, qty);
       setItems((prev) => {
@@ -95,7 +95,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         if (existing) {
           return prev.map((l) => (l.id === id ? { ...l, qty: l.qty + add } : l));
         }
-        return [...prev, { id, label, qty: add, price: PRODUCT.price }];
+        return [...prev, { id, label, qty: add, price }];
       });
       showToast(`${label} added to cart`);
     },

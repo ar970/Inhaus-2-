@@ -22,6 +22,15 @@ export interface Chapter {
   reverse?: boolean;
 }
 
+export const BUNDLE = {
+  name: "The Bundle",
+  /** all three editions, one box */
+  price: 1299,
+  /** what three single bottles would cost — used to show the saving */
+  regularPrice: 1497,
+  lead: "All three editions in one box. Study Fuel, Creator Fuel, and Work Flow — the same cold-extracted Arabica, three identities to keep on rotation. One for the desk, one to gift, one for the office.",
+} as const;
+
 export const CHAPTERS: Chapter[] = [
   {
     id: "study-fuel",

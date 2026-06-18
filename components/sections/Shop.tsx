@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { useCart } from "@/components/providers/CartProvider";
 import { Button } from "@/components/ui/Button";
-import { CHAPTERS, type Chapter as ChapterType } from "@/lib/products";
+import { BUNDLE, CHAPTERS, type Chapter as ChapterType } from "@/lib/products";
 import { PRODUCT } from "@/lib/product";
 import { cn, formatINR } from "@/lib/utils";
 
@@ -110,12 +110,76 @@ function Chapter({ c }: { c: ChapterType }) {
   );
 }
 
+function BundleCard() {
+  const { addItem } = useCart();
+  const saving = BUNDLE.regularPrice - BUNDLE.price;
+
+  return (
+    <section className="border-b border-white/5 bg-dark px-5 py-20 sm:px-[6vw] lg:py-28">
+      <div className="mx-auto grid max-w-[1100px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        {/* Three pouches */}
+        <div className="flex items-end justify-center gap-3 sm:gap-5">
+          {CHAPTERS.map((c, i) => (
+            <img
+              key={c.id}
+              src={c.image}
+              alt={`INHAUS ${c.name.replace(/\.$/, "")} pouch`}
+              loading="lazy"
+              className={cn(
+                "w-1/3 max-w-[150px] object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.8)]",
+                i === 1 && "-mb-4 scale-110",
+              )}
+            />
+          ))}
+        </div>
+
+        {/* Copy + price */}
+        <div className="flex flex-col justify-center">
+          <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-gold">
+            Best value · All three editions
+          </span>
+          <h2 className="mt-5 font-display text-[clamp(2.8rem,5vw,5rem)] font-light italic leading-[0.92] text-white">
+            The Bundle.
+          </h2>
+          <p className="mt-5 max-w-md text-[0.97rem] font-normal leading-relaxed text-white/85">
+            {BUNDLE.lead}
+          </p>
+
+          <div className="mt-10 flex items-center gap-6 border-t border-white/8 pt-8">
+            <div className="flex items-baseline gap-3">
+              <span className="font-display text-[2.2rem] italic leading-none text-white">
+                {formatINR(BUNDLE.price)}
+              </span>
+              <span className="font-mono text-[0.8rem] text-white/45 line-through">
+                {formatINR(BUNDLE.regularPrice)}
+              </span>
+            </div>
+            <Button
+              variant="gold"
+              size="lg"
+              className="flex-1"
+              onClick={() => addItem(BUNDLE.name, 1, BUNDLE.price)}
+            >
+              Add Bundle
+            </Button>
+          </div>
+
+          <p className="mt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-gold">
+            Save {formatINR(saving)} vs buying separately
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Shop() {
   return (
     <div id="shop">
       {CHAPTERS.map((c) => (
         <Chapter key={c.id} c={c} />
       ))}
+      <BundleCard />
     </div>
   );
 }

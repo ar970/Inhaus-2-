@@ -111,6 +111,13 @@ body {
   animation: pulse-alert 1.5s ease-in-out infinite;
 }
 
+/* Custom cursor — desktop only, pointer device only */
+@media (pointer: fine) and (min-width: 1024px) {
+  html {
+    cursor: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

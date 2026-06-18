@@ -1,10 +1,10 @@
 import { Reveal } from "@/components/ui/Reveal";
 
 const STATS = [
-  { value: "12,000+", label: "Orders fulfilled" },
+  { value: "500+", label: "Orders fulfilled" },
   { value: "4.9 ★", label: "Average rating" },
-  { value: "₹25", label: "Per cup" },
-  { value: "Free", label: "Shipping" },
+  { value: "₹25", label: "A cup" },
+  { value: "₹999+", label: "Free shipping" },
 ];
 
 export function TrustStrip() {

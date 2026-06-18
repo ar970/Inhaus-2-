@@ -7,6 +7,9 @@ import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { FomoBar } from "@/components/layout/FomoBar";
 import { Toast } from "@/components/ui/Toast";
+import { Grain } from "@/components/ui/Grain";
+import { IntroOverlay } from "@/components/ui/IntroOverlay";
+import { Cursor } from "@/components/ui/Cursor";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -72,6 +75,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${spaceGrotesk.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <IntroOverlay />
+        <Grain />
+        <Cursor />
         <Providers>
           <Header />
           <main>{children}</main>

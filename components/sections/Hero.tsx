@@ -1,9 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/Button";
 import { scrollToId } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
+
+function useTimeGreeting() {
+  const [greeting, setGreeting] = useState("");
+  useEffect(() => {
+    const h = new Date().getHours();
+    setGreeting(
+      h >= 5 && h < 12
+        ? "Good morning."
+        : h >= 12 && h < 17
+          ? "Good afternoon."
+          : h >= 17 && h < 21
+            ? "Good evening."
+            : "Still up?",
+    );
+  }, []);
+  return greeting;
+}
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&q=80&w=2000";
@@ -18,6 +36,7 @@ const item: Variants = {
 };
 
 export function Hero() {
+  const greeting = useTimeGreeting();
   return (
     <section
       id="top"
@@ -45,6 +64,9 @@ export function Hero() {
           variants={item}
           className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-white/40"
         >
+          {greeting && (
+            <span className="text-gold/65 mr-2">{greeting}</span>
+          )}
           Cold-extracted · Chikmagalur Arabica · 200ml
         </motion.span>
 

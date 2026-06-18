@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Shop } from "@/components/sections/Shop";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ComparisonSection } from "@/components/sections/ComparisonSection";
 import { Reviews } from "@/components/sections/Reviews";
 import { MassiveMarquee } from "@/components/sections/MassiveMarquee";
@@ -34,6 +35,7 @@ export default function Home() {
       <TrustStrip />
       <Manifesto />
       <Shop />
+      <HowItWorks />
       <ComparisonSection />
       <Reviews />
       <MassiveMarquee />

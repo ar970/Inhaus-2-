@@ -235,6 +235,9 @@ export function Hero() {
           <Button variant="gold" size="xl" onClick={() => scrollToId("shop")}>
             Shop Now — ₹499
           </Button>
+          <Button variant="link" onClick={() => scrollToId("how-it-works")}>
+            How it Works →
+          </Button>
           <Button variant="link" onClick={() => scrollToId("manifesto")}>
             Our story →
           </Button>

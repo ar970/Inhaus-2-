@@ -4,6 +4,14 @@ import { ScrollButton } from "@/components/ui/ScrollButton";
 const BREAKOUT_IMG =
   "https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?auto=format&fit=crop&q=80&w=2000";
 
+const ORIGIN_SPECS = [
+  { label: "Region", value: "Chikmagalur, Karnataka" },
+  { label: "Altitude", value: "4,300 ft" },
+  { label: "Bean", value: "Single-origin Arabica" },
+  { label: "Process", value: "Cold-extracted" },
+  { label: "Preservatives", value: "None. Ever." },
+];
+
 function DarkTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-light italic leading-[1.1] text-white lg:sticky lg:top-28">
@@ -23,18 +31,21 @@ function LightTitle({ children }: { children: React.ReactNode }) {
 export function Manifesto() {
   return (
     <div id="manifesto" className="relative z-20">
-      {/* 01 — dark */}
+
+      {/* 01 — dark — The problem */}
       <section className="grid gap-10 border-b border-white/5 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
         <DarkTitle>The café queue is a trap.</DarkTitle>
         <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/70">
           <p>
-            You sit down, get into the flow, and the caffeine wears off. Two
-            choices: walk to a café, lose 30 minutes, and spend ₹250. Or drink
-            the burnt sludge from the office machine.
+            You lock in. The flow hits. Then the caffeine drops. Two choices:
+            break everything, walk 10 minutes to the nearest café, spend ₹250,
+            and lose 30 minutes you won&apos;t get back — or pour the burnt
+            output of the office machine and pretend it&apos;s fine.
           </p>
           <p>
-            Good coffee has always required sacrifice — your time, your wallet,
-            or both. We decided that was a design flaw worth fixing.
+            Great coffee in India has always demanded sacrifice. Your time. Your
+            money. Your standards. We decided that was a design flaw, not a
+            feature. INHAUS exists to remove the trade-off entirely.
           </p>
         </Reveal>
       </section>
@@ -51,45 +62,82 @@ export function Manifesto() {
         aria-hidden
       />
 
-      {/* 02 — cream */}
+      {/* 02 — cream — Origin story */}
       <section className="grid gap-10 border-b border-dark/8 bg-cream px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
-        <LightTitle>
-          14 months of{" "}
-          <em className="not-italic text-gold">obsessive extraction.</em>
-        </LightTitle>
+        <div className="lg:sticky lg:top-28">
+          <LightTitle>
+            Born at{" "}
+            <em className="not-italic text-gold">4,300 feet</em>
+            <br />above sea level.
+          </LightTitle>
+
+          {/* Origin spec grid */}
+          <dl className="mt-10 grid grid-cols-1 gap-y-4 border-t border-dark/10 pt-8">
+            {ORIGIN_SPECS.map((s) => (
+              <div key={s.label} className="flex items-baseline justify-between gap-4">
+                <dt className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-dark/38">
+                  {s.label}
+                </dt>
+                <dd className="text-right font-mono text-[0.72rem] font-medium text-dark/75">
+                  {s.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
         <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-dark/70">
           <p>
-            Dehydrating coffee strips the oils and aromatics that make great
-            espresso taste great. That&apos;s why instant coffee tastes like ash.
-            We took a different route.
+            Chikmagalur, Karnataka. India&apos;s oldest coffee region — where a
+            17th-century Sufi saint named Baba Budan smuggled seven coffee seeds
+            home from Yemen and planted them in these misty Western Ghats hills.
+            The same shade-grown estates now supply specialty cafés across
+            Europe and Japan. That is where INHAUS begins.
           </p>
           <p>
-            Cold-extraction brews 100% specialty Arabica over many hours at
-            low temperature — locking in the full flavour profile of a
-            commercial machine. We bottle it raw. No preservatives, no sugar,
-            no stabilisers.
+            Our supplier, Brewcasso, sources single-origin Arabica directly from
+            farms at 4,300 feet above sea level. Cold-extraction then brews those
+            beans over many hours at low temperature — not spray-dried, not
+            freeze-dried, not instant. Real brewed liquid, locked at peak
+            extraction to preserve the full flavour profile:{" "}
+            <strong className="font-medium text-dark">
+              naturally nutty and bitter-sweet, with dark chocolate notes
+              and a clean finish.
+            </strong>
           </p>
-          <p className="font-medium text-dark">
-            Pour an ounce. Add water or milk. It doesn&apos;t taste{" "}
-            <em>like</em> café coffee — it <em className="text-gold">is</em>{" "}
-            café coffee.
+          <p>
+            No preservatives. No sugar. No stabilisers. One ingredient:
+            coffee. Bottled raw, sealed fresh.
           </p>
         </Reveal>
       </section>
 
-      {/* 03 — dark */}
-      <section className="grid items-center gap-10 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
+      {/* 03 — dark — Why it wins */}
+      <section className="grid items-start gap-10 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
         <DarkTitle>
-          Made for the{" "}
-          <br className="hidden lg:block" />
-          builders.
+          Not instant.
+          <br />
+          Not a café.
+          <br />
+          <em className="text-gold">Better than both.</em>
         </DarkTitle>
         <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/70">
           <p>
-            We don&apos;t care about latte art or brewing ceremonies. INHAUS is
-            for the people who ship code, edit film, build businesses, and pull
-            all-nighters. It sits quietly in your fridge and gives you a
-            tactical advantage in 60 seconds.
+            Instant coffee is spray-dried powder. The process strips the oils,
+            aromatics, and character that make Arabica taste like anything worth
+            drinking. That&apos;s why it tastes like ash. It is not coffee — it
+            is the memory of coffee.
+          </p>
+          <p>
+            INHAUS is brewed liquid concentrate made from the same single-origin
+            specialty Arabica that a Chikmagalur café charges ₹250 for. Pour
+            10ml. Add 90ml of water, milk, or ice — whatever you have. Stir.
+            Done in 60 seconds. The cup tastes like a skilled barista made it,
+            because a skilled cold-extraction process did.
+          </p>
+          <p className="font-medium text-white">
+            One bottle. 20 cups. ₹25 each.{" "}
+            <span className="text-gold">No queue. No machine. No compromise.</span>
           </p>
           <ScrollButton targetId="shop" className="mt-2">
             Shop The Reserve

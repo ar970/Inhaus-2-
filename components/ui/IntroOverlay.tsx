@@ -4,19 +4,13 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const LINES = ["2am.", "The machine is dead.", "There's a third way."];
-const SESSION_KEY = "inhaus-intro-v1";
 
 export function IntroOverlay() {
   const [visible, setVisible] = useState(false);
   const [out, setOut] = useState(false);
 
   useEffect(() => {
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      sessionStorage.getItem(SESSION_KEY)
-    )
-      return;
-    sessionStorage.setItem(SESSION_KEY, "1");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setVisible(true);
     const t = setTimeout(() => setOut(true), 2500);
     return () => clearTimeout(t);

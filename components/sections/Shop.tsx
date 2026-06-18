@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import { useCart } from "@/components/providers/CartProvider";
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { CHAPTERS, type Chapter as ChapterType } from "@/lib/products";
 import { PRODUCT } from "@/lib/product";
@@ -78,67 +77,18 @@ function Chapter({ c }: { c: ChapterType }) {
         {c.lead}
       </p>
 
-      <div className="my-9 grid grid-cols-1 gap-x-8 gap-y-5 border-t border-white/8 pt-8 sm:grid-cols-2">
-        {c.specs.map((s) => (
-          <div key={s.label}>
-            <h4 className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-white/55">
-              {s.label}
-            </h4>
-            <p className="mt-1.5 text-sm font-medium text-white">{s.value}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="space-y-5">
-        {/* Price vs café comparison */}
-        <div className="flex items-end justify-between border-y border-white/8 py-5">
-          <span className="font-display text-[2.6rem] italic leading-none text-white">
-            {formatINR(PRODUCT.price)}
-          </span>
-          <div className="text-right">
-            <p className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-gold">
-              ~₹{PRODUCT.perCup} a cup
-            </p>
-            <p className="mt-0.5 font-mono text-[0.52rem] uppercase tracking-[0.1em] text-white/55">
-              vs ₹250 at a café
-            </p>
-          </div>
-        </div>
-
-        {/* Subtle urgency — no progress bar */}
-        {c.statusTone === "alert" && (
-          <p
-            className="font-mono text-[0.6rem] uppercase tracking-[0.2em]"
-            style={{ color: c.accent }}
-          >
-            ⟶ {c.status} — order before this batch closes
-          </p>
-        )}
-
+      <div className="mt-10 flex items-center gap-6 border-t border-white/8 pt-8">
+        <span className="font-display text-[2.2rem] italic leading-none text-white">
+          {formatINR(PRODUCT.price)}
+        </span>
         <Button
           variant="gold"
-          size="xl"
-          className="w-full"
+          size="lg"
+          className="flex-1"
           onClick={() => addItem(label)}
         >
-          Add To Cart — {formatINR(PRODUCT.price)}
+          Add To Cart
         </Button>
-
-        {/* Value bullets */}
-        <ul className="space-y-3 pt-1">
-          {[
-            "20 cups in every bottle",
-            "Free shipping above ₹999",
-            "Same Arabica a café charges ₹250 for",
-          ].map((line) => (
-            <li key={line} className="flex items-start gap-2.5">
-              <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" strokeWidth={2.5} />
-              <span className="font-mono text-[0.62rem] uppercase tracking-[0.1em] text-white/70">
-                {line}
-              </span>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

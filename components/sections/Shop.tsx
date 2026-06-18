@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { useCart } from "@/components/providers/CartProvider";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { CHAPTERS, type Chapter as ChapterType } from "@/lib/products";
 import { PRODUCT } from "@/lib/product";
@@ -56,7 +57,6 @@ function ChapterVisual({ c, label }: { c: ChapterType; label: string }) {
 function Chapter({ c }: { c: ChapterType }) {
   const { addItem } = useCart();
   const label = c.name.replace(/\.$/, "");
-  const statusColor = c.statusTone === "gold" ? "var(--color-gold)" : "var(--color-alert)";
 
   const content = (
     <div
@@ -89,41 +89,56 @@ function Chapter({ c }: { c: ChapterType }) {
         ))}
       </div>
 
-      <div className="border border-white/8 bg-white/[0.015] p-5">
-        <div className="flex items-center justify-between font-mono text-[0.68rem] uppercase tracking-[0.05em] text-white">
-          <span>{c.batch} Status</span>
-          <span style={{ color: statusColor }}>{c.status}</span>
-        </div>
-        <div className="my-4 h-[3px] w-full overflow-hidden rounded-full bg-white/8">
-          <div
-            className="h-full rounded-full"
-            style={{ width: `${c.progress}%`, background: statusColor }}
-          />
-        </div>
-
-        <div className="mb-4 flex items-baseline justify-between">
-          <span className="font-display text-[2rem] italic leading-none text-white">
+      <div className="space-y-5">
+        {/* Price vs café comparison */}
+        <div className="flex items-end justify-between border-y border-white/8 py-5">
+          <span className="font-display text-[2.6rem] italic leading-none text-white">
             {formatINR(PRODUCT.price)}
           </span>
-          <span className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/38">
-            ~₹{PRODUCT.perCup} per cup
-          </span>
+          <div className="text-right">
+            <p className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-gold">
+              ~₹{PRODUCT.perCup} a cup
+            </p>
+            <p className="mt-0.5 font-mono text-[0.52rem] uppercase tracking-[0.1em] text-white/30">
+              vs ₹250 at a café
+            </p>
+          </div>
         </div>
 
+        {/* Subtle urgency — no progress bar */}
+        {c.statusTone === "alert" && (
+          <p
+            className="font-mono text-[0.6rem] uppercase tracking-[0.2em]"
+            style={{ color: c.accent }}
+          >
+            ⟶ {c.status} — order before this batch closes
+          </p>
+        )}
+
         <Button
-          variant={c.statusTone === "gold" ? "gold" : "solid"}
+          variant="gold"
           size="xl"
           className="w-full"
           onClick={() => addItem(label)}
         >
-          Add To Cart
+          Add To Cart — {formatINR(PRODUCT.price)}
         </Button>
 
-        <div className="mt-3 flex justify-center gap-x-5 font-mono text-[0.57rem] uppercase tracking-[0.12em] text-white/25">
-          <span>Free shipping</span>
-          <span>Ships today</span>
-          <span>No subscription</span>
-        </div>
+        {/* Value bullets */}
+        <ul className="space-y-3 pt-1">
+          {[
+            "20 cups in every bottle",
+            "Free shipping above ₹999",
+            "Same Arabica a café charges ₹250 for",
+          ].map((line) => (
+            <li key={line} className="flex items-start gap-2.5">
+              <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" strokeWidth={2.5} />
+              <span className="font-mono text-[0.62rem] uppercase tracking-[0.1em] text-white/45">
+                {line}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

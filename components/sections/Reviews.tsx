@@ -53,7 +53,7 @@ export function Reviews() {
           Reviews
         </span>
         <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.5rem)] font-light italic leading-tight text-dark">
-          What 12,000 customers say.
+          Loved by 500+ early customers.
         </h2>
       </Reveal>
 

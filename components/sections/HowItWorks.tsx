@@ -49,7 +49,7 @@ export function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="mb-4 font-mono text-[0.58rem] uppercase tracking-[0.28em] text-gold/60"
+          className="mb-4 font-mono text-[0.58rem] uppercase tracking-[0.28em] text-gold"
         >
           Ready in 60 seconds
         </motion.p>
@@ -73,7 +73,7 @@ export function HowItWorks() {
               <Reveal key={step.number} delay={i * 0.12}>
                 <div className="group relative flex gap-6 border-t border-white/8 py-8 last:border-b last:border-white/8">
                   {/* Step number */}
-                  <span className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-gold/40 transition-colors group-hover:text-gold/70">
+                  <span className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-gold/65 transition-colors group-hover:text-gold">
                     {step.number}
                   </span>
 
@@ -81,7 +81,7 @@ export function HowItWorks() {
                     <h3 className="mb-2 font-display text-[1.55rem] font-light italic text-white">
                       {step.title}
                     </h3>
-                    <p className="text-[0.95rem] font-light leading-[1.8] text-white/55">
+                    <p className="text-[0.95rem] font-light leading-[1.8] text-white/82">
                       {step.body}
                     </p>
                   </div>

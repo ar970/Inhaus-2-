@@ -164,7 +164,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 + i * 0.12, duration: 0.8 }}
-          className={`absolute z-10 hidden flex-col gap-0.5 font-mono text-[0.56rem] uppercase leading-relaxed tracking-[0.2em] text-white/35 sm:flex ${c.pos} ${c.align}`}
+          className={`absolute z-10 hidden flex-col gap-0.5 font-mono text-[0.56rem] uppercase leading-relaxed tracking-[0.2em] text-white/60 sm:flex ${c.pos} ${c.align}`}
         >
           {c.lines.map((l) => (
             <span key={l}>{l}</span>
@@ -182,12 +182,12 @@ export function Hero() {
       >
         {/* Eyebrow with greeting + hairline */}
         <motion.div variants={item} className="flex flex-col items-center gap-4">
-          <span className="inline-flex items-center gap-2.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-white/45">
+          <span className="inline-flex items-center gap-2.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-white/70">
             {greeting && (
               <>
                 <span className="inline-block h-1 w-1 rounded-full bg-gold" />
-                <span className="text-gold/80">{greeting}</span>
-                <span className="text-white/20">—</span>
+                <span className="text-gold">{greeting}</span>
+                <span className="text-white/40">—</span>
               </>
             )}
             Specialty Arabica
@@ -215,14 +215,14 @@ export function Hero() {
         {/* Sub-copy — warm, sensory */}
         <motion.p
           variants={item}
-          className="mx-auto mt-8 max-w-[440px] text-[1.05rem] font-light leading-[1.85] text-white/60"
+          className="mx-auto mt-8 max-w-[440px] text-[1.05rem] font-light leading-[1.85] text-white/85"
         >
           Mountain-grown Arabica from the Western Ghats — notes of dark
           cocoa and toasted nuts, poured in 60 seconds.
         </motion.p>
         <motion.p
           variants={item}
-          className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.24em] text-white/30"
+          className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.24em] text-white/60"
         >
           No machine · No queue · No compromise
         </motion.p>
@@ -250,11 +250,11 @@ export function Hero() {
         >
           {BENEFITS.map((t, i) => (
             <span key={t} className="flex items-center gap-x-3">
-              <span className="font-mono text-[0.58rem] uppercase tracking-[0.18em] text-white/30">
+              <span className="font-mono text-[0.58rem] uppercase tracking-[0.18em] text-white/60">
                 {t}
               </span>
               {i < BENEFITS.length - 1 && (
-                <span className="h-0.5 w-0.5 rounded-full bg-white/20" />
+                <span className="h-0.5 w-0.5 rounded-full bg-white/40" />
               )}
             </span>
           ))}
@@ -275,10 +275,10 @@ export function Hero() {
           transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-1.5"
         >
-          <span className="font-mono text-[0.5rem] uppercase tracking-[0.24em] text-white/30">
+          <span className="font-mono text-[0.5rem] uppercase tracking-[0.24em] text-white/55">
             Scroll
           </span>
-          <svg width="13" height="8" viewBox="0 0 13 8" fill="none" className="text-white/30">
+          <svg width="13" height="8" viewBox="0 0 13 8" fill="none" className="text-white/55">
             <path
               d="M1 1L6.5 6.5L12 1"
               stroke="currentColor"

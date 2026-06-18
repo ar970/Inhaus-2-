@@ -34,7 +34,7 @@ export function Manifesto() {
       {/* 01 — dark — The problem */}
       <section className="grid gap-10 border-b border-white/5 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
         <DarkTitle>The café queue is a trap.</DarkTitle>
-        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/70">
+        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/85">
           <p>
             You lock in. The flow hits. Then the caffeine drops. Two choices:
             break everything, walk 10 minutes to the nearest café, spend ₹250,
@@ -74,10 +74,10 @@ export function Manifesto() {
           <dl className="mt-10 grid grid-cols-1 gap-y-4 border-t border-dark/10 pt-8">
             {ORIGIN_SPECS.map((s) => (
               <div key={s.label} className="flex items-baseline justify-between gap-4">
-                <dt className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-dark/38">
+                <dt className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-dark/60">
                   {s.label}
                 </dt>
-                <dd className="text-right font-mono text-[0.72rem] font-medium text-dark/75">
+                <dd className="text-right font-mono text-[0.72rem] font-medium text-dark/90">
                   {s.value}
                 </dd>
               </div>
@@ -85,7 +85,7 @@ export function Manifesto() {
           </dl>
         </div>
 
-        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-dark/70">
+        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-dark/85">
           <p>
             Chikmagalur, Karnataka. India&apos;s oldest coffee region — where a
             17th-century Sufi saint named Baba Budan smuggled seven coffee seeds

@@ -49,7 +49,7 @@ export function FinalCTA() {
               <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15">
                 <Check size={11} className="text-gold" strokeWidth={3} />
               </span>
-              <span className="text-sm leading-snug text-white/65">
+              <span className="text-sm leading-snug text-white/82">
                 <strong className="font-semibold text-white">{b.headline}</strong>
                 {" — "}
                 {b.body}
@@ -61,14 +61,14 @@ export function FinalCTA() {
         {/* Coupon strip */}
         <div className="mt-8 flex items-center justify-between border border-gold/25 bg-gold/[0.07] px-5 py-3.5">
           <div className="text-left">
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-white/40">
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-white/65">
               First order discount
             </p>
             <p className="mt-0.5 font-mono text-[0.78rem] font-medium uppercase tracking-[0.1em] text-gold">
               Use {COUPON.code} — save ₹{Math.round((PRODUCT.price * COUPON.percent) / 100)} instantly
             </p>
           </div>
-          <span className="font-display text-3xl italic text-white/20">
+          <span className="font-display text-3xl italic text-white/35">
             {COUPON.percent}%
           </span>
         </div>
@@ -83,7 +83,7 @@ export function FinalCTA() {
           Shop The Reserve — ₹{PRODUCT.price}
         </ScrollButton>
 
-        <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-white/22">
+        <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-white/55">
           No subscription · Free shipping · 20 cups guaranteed
         </p>
       </Reveal>

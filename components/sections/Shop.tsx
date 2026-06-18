@@ -65,8 +65,8 @@ function Chapter({ c }: { c: ChapterType }) {
         c.reverse ? "lg:order-2" : "lg:order-1",
       )}
     >
-      <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/30">
-        {`Edition ${c.index} of 3 · Same concentrate · Different identity`}
+      <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/60">
+        {`Edition ${c.index} of 3  ·  Same concentrate  ·  Different identity`}
       </span>
       <h2
         className="mt-5 font-display text-[clamp(2.8rem,5vw,5.5rem)] font-light italic leading-[0.92]"
@@ -74,14 +74,14 @@ function Chapter({ c }: { c: ChapterType }) {
       >
         {c.name}
       </h2>
-      <p className="mt-5 max-w-md text-[0.97rem] font-light leading-relaxed text-white/70">
+      <p className="mt-5 max-w-md text-[0.97rem] font-light leading-relaxed text-white/85">
         {c.lead}
       </p>
 
       <div className="my-9 grid grid-cols-1 gap-x-8 gap-y-5 border-t border-white/8 pt-8 sm:grid-cols-2">
         {c.specs.map((s) => (
           <div key={s.label}>
-            <h4 className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-white/30">
+            <h4 className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-white/55">
               {s.label}
             </h4>
             <p className="mt-1.5 text-sm font-medium text-white">{s.value}</p>
@@ -99,7 +99,7 @@ function Chapter({ c }: { c: ChapterType }) {
             <p className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-gold">
               ~₹{PRODUCT.perCup} a cup
             </p>
-            <p className="mt-0.5 font-mono text-[0.52rem] uppercase tracking-[0.1em] text-white/30">
+            <p className="mt-0.5 font-mono text-[0.52rem] uppercase tracking-[0.1em] text-white/55">
               vs ₹250 at a café
             </p>
           </div>
@@ -133,7 +133,7 @@ function Chapter({ c }: { c: ChapterType }) {
           ].map((line) => (
             <li key={line} className="flex items-start gap-2.5">
               <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" strokeWidth={2.5} />
-              <span className="font-mono text-[0.62rem] uppercase tracking-[0.1em] text-white/45">
+              <span className="font-mono text-[0.62rem] uppercase tracking-[0.1em] text-white/70">
                 {line}
               </span>
             </li>

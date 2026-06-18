@@ -45,7 +45,7 @@ export function Credentials() {
               <h3 className="font-display text-[1.15rem] font-light italic leading-tight text-dark">
                 {c.label}
               </h3>
-              <p className="mt-2 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-dark/40">
+              <p className="mt-2 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-dark/65">
                 {c.sub}
               </p>
             </Reveal>

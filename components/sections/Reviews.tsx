@@ -71,12 +71,12 @@ export function Reviews() {
                 </span>
               ))}
             </div>
-            <p className="flex-1 text-[0.95rem] font-light leading-relaxed text-dark/70">
+            <p className="flex-1 text-[0.95rem] font-light leading-relaxed text-dark/85">
               &ldquo;{r.quote}&rdquo;
             </p>
             <div className="border-t border-dark/8 pt-4">
               <p className="text-sm font-medium text-dark">{r.name}</p>
-              <p className="mt-0.5 font-mono text-[0.62rem] uppercase tracking-[0.15em] text-dark/35">
+              <p className="mt-0.5 font-mono text-[0.62rem] uppercase tracking-[0.15em] text-dark/60">
                 {r.role}
               </p>
             </div>

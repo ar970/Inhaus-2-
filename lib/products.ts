@@ -13,14 +13,14 @@ export interface Chapter {
   status: string;
   statusTone: "alert" | "gold";
   progress: number;
-  glow: string;
-  titleColor: string;
+  /** persona accent — matches the pouch artwork (orange / pink / teal) */
+  accent: string;
+  /** section background, matched to the product photo so the pouch blends seamlessly */
   bg: string;
+  /** product photo in /public/products */
   image: string;
   reverse?: boolean;
 }
-
-const CDN = "https://inhauscoffee.com/cdn/shop/t/45/assets";
 
 export const CHAPTERS: Chapter[] = [
   {
@@ -38,10 +38,9 @@ export const CHAPTERS: Chapter[] = [
     status: "89% Claimed",
     statusTone: "alert",
     progress: 89,
-    glow: "#2A4A7F",
-    titleColor: "#8BA4BE",
-    bg: "#0A0D14",
-    image: `${CDN}/logo%20s.jpeg`,
+    accent: "#F26A1F",
+    bg: "#000000",
+    image: "/products/study-fuel.png",
   },
   {
     id: "creator-fuel",
@@ -58,10 +57,9 @@ export const CHAPTERS: Chapter[] = [
     status: "Restocked Today",
     statusTone: "gold",
     progress: 15,
-    glow: "#C8A96E",
-    titleColor: "#C47E3F",
-    bg: "#17110C",
-    image: `${CDN}/logo%20c.jpeg`,
+    accent: "#E81E78",
+    bg: "#000000",
+    image: "/products/creator-fuel.png",
     reverse: true,
   },
   {
@@ -79,9 +77,8 @@ export const CHAPTERS: Chapter[] = [
     status: "Selling Fast",
     statusTone: "alert",
     progress: 75,
-    glow: "#555555",
-    titleColor: "#E0E0E0",
-    bg: "#0F0F0F",
-    image: `${CDN}/logo%20p.jpeg`,
+    accent: "#15B5C7",
+    bg: "#030303",
+    image: "/products/work-flow.png",
   },
 ];

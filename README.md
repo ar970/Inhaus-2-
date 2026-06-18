@@ -32,18 +32,20 @@ scroll-aware header.
 
 ## Images
 
-The hero/manifesto backgrounds and product shots reference **real remote URLs**
-(your store CDN + Unsplash) directly via `<img>`/CSS, so they render on your
-machine and on deploy with no config. Each product image has a graceful
-on-brand fallback if a URL is unavailable.
+The three product shots are **local brand assets** in `public/products/`, each
+shot on black. Every chapter's section background is matched to its photo so the
+pouch blends in with no visible edge, and the section's accent (title + halo)
+matches the pouch artwork — Study orange, Creator pink, Work Flow teal. The
+hero/manifesto backgrounds still reference Unsplash URLs. Every product image
+has a graceful on-brand fallback if it fails to load.
 
 | What | Where |
 | --- | --- |
-| Product photos (per chapter) | `image` field in `lib/products.ts` (currently your `inhauscoffee.com` CDN) |
+| Product photos (per chapter) | `public/products/{study-fuel,creator-fuel,work-flow}.png` → `image` field in `lib/products.ts` |
 | Hero background | `HERO_IMG` in `components/sections/Hero.tsx` |
 | Manifesto break image | `BREAKOUT_IMG` in `components/sections/Manifesto.tsx` |
 | Price / coupon | `lib/product.ts` |
-| Chapter copy, specs, stock status, theme colours | `lib/products.ts` |
+| Chapter copy, specs, stock status, accent + theme | `lib/products.ts` |
 
 > Note: this sandbox blocks outbound network, so preview screenshots taken here
 > show the dark layout without the remote photos. They load normally in a real

@@ -11,31 +11,36 @@ import { cn, formatINR } from "@/lib/utils";
 function ChapterVisual({ c, label }: { c: ChapterType; label: string }) {
   const [err, setErr] = useState(false);
   return (
-    <div className="relative flex min-h-[44vh] items-center justify-center overflow-hidden p-10 lg:min-h-full">
+    // The pouch photos are shot on black, identical to the section background, so they
+    // blend with no visible edge. A subtle accent halo tints the surrounding black.
+    <div
+      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden lg:min-h-full"
+      style={{ background: c.bg }}
+    >
       <div
-        className="absolute h-[65%] w-[65%] rounded-full opacity-20 blur-[100px]"
-        style={{ background: c.glow }}
+        className="pointer-events-none absolute h-[70%] w-[70%] rounded-full blur-[110px]"
+        style={{ background: c.accent, opacity: 0.16 }}
         aria-hidden
       />
       {!err ? (
         <img
           src={c.image}
-          alt={`INHAUS ${label} — 200ml concentrate`}
+          alt={`INHAUS ${label} — 200ml coffee concentrate pouch`}
           onError={() => setErr(true)}
           loading="lazy"
-          className="relative z-10 w-full max-w-[340px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)] transition-transform duration-500 hover:scale-[1.03]"
+          className="relative z-10 w-full max-w-[380px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)] transition-transform duration-500 hover:scale-[1.03] lg:max-w-[460px]"
         />
       ) : (
         <div
-          className="relative z-10 flex aspect-[3/5] w-[190px] flex-col items-center justify-center gap-3 border text-center"
-          style={{ borderColor: c.titleColor, background: "rgba(0,0,0,0.3)" }}
+          className="relative z-10 flex aspect-[3/5] w-[200px] flex-col items-center justify-center gap-3 border text-center"
+          style={{ borderColor: c.accent, background: "rgba(0,0,0,0.25)" }}
         >
           <span className="font-mono text-[0.58rem] uppercase tracking-[0.25em] text-white/40">
             INHAUS
           </span>
           <span
             className="px-4 font-display text-2xl italic leading-tight"
-            style={{ color: c.titleColor }}
+            style={{ color: c.accent }}
           >
             {label}
           </span>
@@ -65,7 +70,7 @@ function Chapter({ c }: { c: ChapterType }) {
       </span>
       <h2
         className="mt-5 font-display text-[clamp(2.8rem,5vw,5.5rem)] font-light italic leading-[0.92]"
-        style={{ color: c.titleColor }}
+        style={{ color: c.accent }}
       >
         {c.name}
       </h2>

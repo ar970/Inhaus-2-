@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -6,7 +7,12 @@ import { ArrowRight, Check, Minus, Plus, ShoppingBag, Trash2, Truck, X } from "l
 import { useCart } from "@/components/providers/CartProvider";
 import { Button } from "@/components/ui/Button";
 import { COUPON } from "@/lib/product";
+import { CHAPTERS } from "@/lib/products";
 import { formatINR, scrollToId } from "@/lib/utils";
+
+const IMG_BY_ID: Record<string, string> = Object.fromEntries(
+  CHAPTERS.map((c) => [c.id, c.image]),
+);
 
 export function CartDrawer() {
   const {
@@ -116,10 +122,19 @@ export function CartDrawer() {
                   <ul className="divide-y divide-white/10">
                     {items.map((line) => (
                       <li key={line.id} className="flex gap-4 py-4">
-                        <div className="flex h-20 w-16 shrink-0 items-center justify-center border border-white/10 bg-white/[0.03]">
-                          <span className="font-display text-2xl text-gold">
-                            {line.label.charAt(0)}
-                          </span>
+                        <div className="h-20 w-16 shrink-0 overflow-hidden border border-white/10 bg-black">
+                          {IMG_BY_ID[line.id] ? (
+                            <img
+                              src={IMG_BY_ID[line.id]}
+                              alt={line.label}
+                              loading="lazy"
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            <span className="flex h-full w-full items-center justify-center font-display text-2xl italic text-gold">
+                              {line.label.charAt(0)}
+                            </span>
+                          )}
                         </div>
                         <div className="flex flex-1 flex-col">
                           <div className="flex justify-between gap-3">

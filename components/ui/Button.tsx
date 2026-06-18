@@ -8,7 +8,7 @@ const base =
 
 const variants: Record<Exclude<Variant, "link">, string> = {
   solid:
-    "bg-white text-dark hover:bg-gold hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(212,175,55,0.28)]",
+    "bg-white text-dark hover:bg-gold hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(196,126,63,0.28)]",
   gold: "bg-gold text-dark hover:brightness-110 hover:-translate-y-0.5",
   outline: "border border-white/25 text-white hover:bg-white hover:text-dark",
   dark: "border border-white/20 bg-dark text-white hover:bg-white hover:text-dark",

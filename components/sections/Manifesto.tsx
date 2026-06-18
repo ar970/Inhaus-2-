@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/ui/Reveal";
-import { ScrollButton } from "@/components/ui/ScrollButton";
 
 const BREAKOUT_IMG =
   "https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?auto=format&fit=crop&q=80&w=2000";
@@ -112,38 +111,6 @@ export function Manifesto() {
         </Reveal>
       </section>
 
-      {/* 03 — dark — Why it wins */}
-      <section className="grid items-start gap-10 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
-        <DarkTitle>
-          Not instant.
-          <br />
-          Not a café.
-          <br />
-          <em className="text-gold">Better than both.</em>
-        </DarkTitle>
-        <Reveal className="space-y-6 text-[1rem] font-light leading-[1.85] text-white/70">
-          <p>
-            Instant coffee is spray-dried powder. The process strips the oils,
-            aromatics, and character that make Arabica taste like anything worth
-            drinking. That&apos;s why it tastes like ash. It is not coffee — it
-            is the memory of coffee.
-          </p>
-          <p>
-            INHAUS is brewed liquid concentrate made from the same single-origin
-            specialty Arabica that a Chikmagalur café charges ₹250 for. Pour
-            10ml. Add 90ml of water, milk, or ice — whatever you have. Stir.
-            Done in 60 seconds. The cup tastes like a skilled barista made it,
-            because a skilled cold-extraction process did.
-          </p>
-          <p className="font-medium text-white">
-            One bottle. 20 cups. ₹25 each.{" "}
-            <span className="text-gold">No queue. No machine. No compromise.</span>
-          </p>
-          <ScrollButton targetId="shop" className="mt-2">
-            Shop The Reserve
-          </ScrollButton>
-        </Reveal>
-      </section>
     </div>
   );
 }

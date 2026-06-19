@@ -13,9 +13,9 @@ import { Button } from "@/components/ui/Button";
 import { scrollToId } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
 
-/* Moody dark pour — single cup, uncluttered */
+/* Warm café lifestyle — inviting, golden-lit */
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=2200";
+  "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=2200";
 
 /* ── rising steam wisps ── */
 function Steam({ disabled }: { disabled: boolean }) {
@@ -96,7 +96,7 @@ export function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-24 pt-36 text-center sm:px-[5vw]"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-20 pt-28 text-center sm:pb-24 sm:pt-36 sm:px-[5vw]"
     >
       {/* ── Background (parallax) ── */}
       <motion.div className="absolute inset-0" style={{ y: reduce ? 0 : bgY }}>
@@ -104,24 +104,24 @@ export function Hero() {
           src={HERO_IMG}
           alt=""
           aria-hidden
-          className="h-[112%] w-full object-cover object-[center_55%]"
+          className="h-[112%] w-full object-cover object-[center_35%]"
           style={{ scale: reduce ? 1.06 : bgScale }}
         />
-        {/* deep espresso wash — lets the image breathe but keeps text crisp */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0603]/85 via-[#0d0705]/70 to-[#100806]/90" />
-        {/* warm amber pool — centred on the cup */}
+        {/* warm espresso wash — dark enough for text, amber-tinted not cold */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a02]/80 via-[#120603]/62 to-[#0c0402]/90" />
+        {/* golden warmth pool — sits where the headline lands */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[45%] h-[70vh] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
+          className="pointer-events-none absolute left-1/2 top-[42%] h-[75vh] w-[75vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px]"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(196,126,63,0.28) 0%, rgba(180,100,30,0.10) 50%, transparent 72%)",
+              "radial-gradient(ellipse, rgba(196,126,63,0.50) 0%, rgba(180,100,30,0.22) 45%, transparent 70%)",
           }}
           aria-hidden
         />
         {/* edge vignette */}
         <div
           className="pointer-events-none absolute inset-0"
-          style={{ boxShadow: "inset 0 0 200px 60px rgba(6,4,2,0.75)" }}
+          style={{ boxShadow: "inset 0 0 180px 50px rgba(8,4,1,0.72)" }}
           aria-hidden
         />
       </motion.div>
@@ -185,14 +185,14 @@ export function Hero() {
         {/* Sub-copy — warm, sensory */}
         <motion.p
           variants={item}
-          className="mx-auto mt-8 max-w-[440px] text-[1.05rem] font-normal leading-[1.85] text-white/85"
+          className="mx-auto mt-8 max-w-[420px] text-[1.05rem] font-normal leading-[1.8] text-white/90"
         >
-          Mountain-grown Arabica from the Western Ghats — notes of dark
-          cocoa and toasted nuts, poured in 60 seconds.
+          Cold-extracted Arabica concentrate from the Western Ghats.
+          Dark cocoa, toasted nuts — just pour and sip in 60 seconds.
         </motion.p>
         <motion.p
           variants={item}
-          className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.24em] text-white/60"
+          className="mt-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-white/65"
         >
           No machine · No queue · No compromise
         </motion.p>

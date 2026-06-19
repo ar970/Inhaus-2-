@@ -6,7 +6,6 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ComparisonSection } from "@/components/sections/ComparisonSection";
 import { Reviews } from "@/components/sections/Reviews";
 import { MassiveMarquee } from "@/components/sections/MassiveMarquee";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PRODUCT } from "@/lib/product";
 
 const productJsonLd = {
@@ -39,7 +38,6 @@ export default function Home() {
       <ComparisonSection />
       <Reviews />
       <MassiveMarquee />
-      <FinalCTA />
     </>
   );
 }

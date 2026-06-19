@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Space_Grotesk, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers/Providers";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
@@ -78,6 +79,7 @@ export default function RootLayout({
         <Grain />
         <Cursor />
         <Providers>
+          <AnnouncementBar />
           <Header />
           <main>{children}</main>
           <Footer />

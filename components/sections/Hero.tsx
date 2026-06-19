@@ -8,6 +8,7 @@ import {
   useReducedMotion,
   type Variants,
 } from "motion/react";
+import { Truck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { scrollToId } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
@@ -241,6 +242,15 @@ export function Hero() {
             Our story →
           </Button>
         </motion.div>
+
+        {/* Free shipping reassurance */}
+        <motion.p
+          variants={item}
+          className="mt-7 flex items-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.2em] text-white/70"
+        >
+          <Truck className="h-3.5 w-3.5 text-gold" strokeWidth={1.6} aria-hidden />
+          Free shipping above ₹999
+        </motion.p>
 
       </motion.div>
 

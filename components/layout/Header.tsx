@@ -6,6 +6,7 @@ import { cn, scrollToId } from "@/lib/utils";
 
 const NAV = [
   { label: "Story", id: "manifesto" },
+  { label: "How it Works", id: "how-it-works" },
   { label: "Shop", id: "shop" },
 ];
 
@@ -44,7 +45,7 @@ export function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToId(item.id)}
-                className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/60 transition-colors hover:text-white"
+                className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/80 transition-colors hover:text-white"
               >
                 {item.label}
               </button>
@@ -53,7 +54,7 @@ export function Header() {
 
           <button
             onClick={open}
-            className="flex items-center gap-2.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/60 transition-colors hover:text-white sm:border-l sm:border-white/15 sm:pl-7"
+            className="flex items-center gap-2.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/80 transition-colors hover:text-white sm:border-l sm:border-white/15 sm:pl-7"
             aria-label={`Open cart, ${totalQty} item${totalQty === 1 ? "" : "s"}`}
           >
             Cart

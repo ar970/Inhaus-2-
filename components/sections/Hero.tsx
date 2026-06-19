@@ -97,7 +97,6 @@ const lineMask: Variants = {
   show: { y: "0%", transition: { duration: 0.95, ease: EASE } },
 };
 
-const BENEFITS = ["20 cups per bottle", "₹25 a cup", "Free above ₹999", "500+ orders"];
 
 export function Hero() {
   const greeting = useTimeGreeting();
@@ -243,22 +242,6 @@ export function Hero() {
           </Button>
         </motion.div>
 
-        {/* Benefit strip with dot separators */}
-        <motion.div
-          variants={item}
-          className="mt-9 flex flex-wrap items-center justify-center gap-x-3 gap-y-2"
-        >
-          {BENEFITS.map((t, i) => (
-            <span key={t} className="flex items-center gap-x-3">
-              <span className="font-mono text-[0.58rem] uppercase tracking-[0.18em] text-white/60">
-                {t}
-              </span>
-              {i < BENEFITS.length - 1 && (
-                <span className="h-0.5 w-0.5 rounded-full bg-white/40" />
-              )}
-            </span>
-          ))}
-        </motion.div>
       </motion.div>
 
       {/* ── Scroll indicator ── */}

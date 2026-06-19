@@ -5,7 +5,6 @@ import { Providers } from "@/components/providers/Providers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
-import { FomoBar } from "@/components/layout/FomoBar";
 import { Toast } from "@/components/ui/Toast";
 import { Grain } from "@/components/ui/Grain";
 import { IntroOverlay } from "@/components/ui/IntroOverlay";
@@ -83,7 +82,6 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <CartDrawer />
-          <FomoBar />
           <Toast />
         </Providers>
       </body>

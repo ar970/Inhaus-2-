@@ -101,6 +101,7 @@ function Chapter({ c }: { c: ChapterType }) {
 
   return (
     <section
+      id={c.id}
       className="grid border-b border-white/5 lg:min-h-[88vh] lg:grid-cols-2"
       style={{ background: c.bg }}
     >
@@ -115,7 +116,7 @@ function BundleCard() {
   const saving = BUNDLE.regularPrice - BUNDLE.price;
 
   return (
-    <section className="border-b border-white/5 bg-dark px-5 py-20 sm:px-[6vw] lg:py-28">
+    <section id="the-bundle" className="border-b border-white/5 bg-dark px-5 py-20 sm:px-[6vw] lg:py-28">
       <div className="mx-auto grid max-w-[1100px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Three pouches */}
         <div className="flex items-end justify-center gap-3 sm:gap-5">

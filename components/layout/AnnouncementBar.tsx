@@ -34,7 +34,7 @@ export function AnnouncementBar() {
       onClick={() => scrollToId("shop")}
       aria-label={`Use code ${COUPON.code} for ${COUPON.percent}% off — free shipping above ₹999`}
       className="fixed inset-x-0 top-0 z-[60] h-9 w-full cursor-pointer overflow-hidden bg-gold transition-[filter] hover:brightness-105"
-      style={{ "--marquee-duration": "22s" } as React.CSSProperties}
+      style={{ "--marquee-duration": "12s" } as React.CSSProperties}
     >
       <div className="animate-scroll-x flex h-full items-center whitespace-nowrap font-mono text-[0.6rem] uppercase tracking-[0.18em] text-dark sm:text-[0.65rem]">
         <Track />

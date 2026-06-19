@@ -2,10 +2,10 @@ const COLS = [
   {
     title: "Shop",
     links: [
-      ["Study Fuel", "#shop"],
-      ["Creator Fuel", "#shop"],
-      ["Work Flow", "#shop"],
-      ["The Bundle", "#shop"],
+      ["Study Fuel", "#study-fuel"],
+      ["Creator Fuel", "#creator-fuel"],
+      ["Work Flow", "#work-flow"],
+      ["The Bundle", "#the-bundle"],
     ],
   },
   {

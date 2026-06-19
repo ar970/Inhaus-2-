@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -12,26 +12,6 @@ import { Truck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { scrollToId } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
-
-/* ── time-aware greeting ── */
-function useTimeGreeting() {
-  const [greeting, setGreeting] = useState("");
-  /* eslint-disable react-hooks/set-state-in-effect */
-  useEffect(() => {
-    const h = new Date().getHours();
-    setGreeting(
-      h >= 5 && h < 12
-        ? "Good morning"
-        : h >= 12 && h < 17
-          ? "Good afternoon"
-          : h >= 17 && h < 21
-            ? "Good evening"
-            : "Still up",
-    );
-  }, []);
-  /* eslint-enable react-hooks/set-state-in-effect */
-  return greeting;
-}
 
 /* Warm pour shot — amber light, soft steam */
 const HERO_IMG =
@@ -100,7 +80,6 @@ const lineMask: Variants = {
 
 
 export function Hero() {
-  const greeting = useTimeGreeting();
   const reduce = useReducedMotion() ?? false;
   const ref = useRef<HTMLElement>(null);
 
@@ -183,14 +162,7 @@ export function Hero() {
         {/* Eyebrow with greeting + hairline */}
         <motion.div variants={item} className="flex flex-col items-center gap-4">
           <span className="inline-flex items-center gap-2.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-white/70">
-            {greeting && (
-              <>
-                <span className="inline-block h-1 w-1 rounded-full bg-gold" />
-                <span className="text-gold">{greeting}</span>
-                <span className="text-white/40">—</span>
-              </>
-            )}
-            Specialty Arabica
+            Speciality Coffee Concentrate
           </span>
           <span className="h-px w-12 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
         </motion.div>

@@ -2,27 +2,22 @@ const COLS = [
   {
     title: "Shop",
     links: [
-      ["Concentrate", "#shop"],
       ["Study Fuel", "#shop"],
       ["Creator Fuel", "#shop"],
       ["Work Flow", "#shop"],
+      ["The Bundle", "#shop"],
     ],
   },
   {
     title: "Company",
     links: [
       ["Our story", "#manifesto"],
-      ["Sourcing", "#"],
-      ["Sustainability", "#"],
-      ["Stockists", "#"],
+      ["How it Works", "#how-it-works"],
     ],
   },
   {
-    title: "Help",
+    title: "Contact",
     links: [
-      ["FAQ", "#"],
-      ["Brew guide", "#"],
-      ["Shipping & returns", "#"],
       ["admin@inhauscoffee.com", "mailto:admin@inhauscoffee.com"],
     ],
   },
@@ -83,17 +78,6 @@ export function Footer() {
         <p className="font-mono text-[0.65rem] tracking-[0.08em] text-white/25">
           © {new Date().getFullYear()} INHAUS · FSSAI Lic. No. 21526030000986
         </p>
-        <div className="flex gap-6">
-          {["Privacy", "Terms", "Shipping Policy"].map((l) => (
-            <a
-              key={l}
-              href="#"
-              className="font-mono text-[0.65rem] tracking-[0.08em] text-white/25 transition-colors hover:text-white/55"
-            >
-              {l}
-            </a>
-          ))}
-        </div>
       </div>
     </footer>
   );

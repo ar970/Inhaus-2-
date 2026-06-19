@@ -34,7 +34,7 @@ export function Manifesto() {
       {/* 01 — dark — The problem */}
       <section className="relative grid gap-10 border-b border-white/5 bg-dark px-5 py-[12vw] sm:px-[5vw] lg:grid-cols-2 lg:gap-24 lg:py-[8vw]">
         <div
-          className="pointer-events-none absolute right-0 top-0 h-[60%] w-[40%] rounded-full blur-[160px]"
+          className="pointer-events-none absolute right-0 top-0 h-[60%] w-[40%] rounded-full blur-[60px]"
           style={{ background: "radial-gradient(ellipse, rgba(196,126,63,0.12) 0%, transparent 70%)" }}
           aria-hidden
         />

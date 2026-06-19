@@ -21,17 +21,17 @@ const HERO_IMG =
 function Steam({ disabled }: { disabled: boolean }) {
   if (disabled) return null;
   const wisps = [
-    { left: "41%", delay: 0, dur: 7.5, w: 64 },
-    { left: "50%", delay: 1.6, dur: 8.5, w: 88 },
-    { left: "58%", delay: 3.1, dur: 8, w: 54 },
-    { left: "47%", delay: 4.7, dur: 9.5, w: 74 },
+    { left: "44%", delay: 0, dur: 8, w: 70 },
+    { left: "52%", delay: 2.2, dur: 9, w: 84 },
+    { left: "58%", delay: 4.3, dur: 8.5, w: 58 },
   ];
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+    // Hidden on mobile — decorative only, and the blur is costly on small GPUs.
+    <div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block" aria-hidden>
       {wisps.map((w, i) => (
         <motion.div
           key={i}
-          className="absolute bottom-[18%] rounded-full blur-[44px]"
+          className="absolute bottom-[18%] rounded-full blur-[40px] will-change-transform"
           style={{
             left: w.left,
             width: w.w,
@@ -111,7 +111,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a02]/80 via-[#120603]/62 to-[#0c0402]/90" />
         {/* golden warmth pool — sits where the headline lands */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[42%] h-[75vh] w-[75vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px]"
+          className="pointer-events-none absolute left-1/2 top-[42%] h-[75vh] w-[75vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px]"
           style={{
             background:
               "radial-gradient(ellipse, rgba(196,126,63,0.50) 0%, rgba(180,100,30,0.22) 45%, transparent 70%)",

@@ -34,7 +34,7 @@ export function Header() {
         className={cn(
           "transition-all duration-500",
           scrolled || mobileOpen
-            ? "border-b border-white/6 bg-dark/96 backdrop-blur-md"
+            ? "border-b border-white/6 bg-dark/97 backdrop-blur-sm"
             : "border-b border-transparent bg-gradient-to-b from-dark/80 to-transparent",
         )}
       >
@@ -112,7 +112,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18 }}
-            className="border-b border-white/8 bg-dark/97 backdrop-blur-md sm:hidden"
+            className="border-b border-white/8 bg-dark/98 backdrop-blur-sm sm:hidden"
           >
             {NAV.map((item) => (
               <button

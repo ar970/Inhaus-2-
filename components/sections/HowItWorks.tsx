@@ -34,7 +34,7 @@ export function HowItWorks() {
     >
       {/* Ambient glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[70vh] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[70vh] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[60px]"
         style={{
           background:
             "radial-gradient(ellipse, rgba(196,126,63,0.14) 0%, rgba(160,90,30,0.05) 55%, transparent 75%)",

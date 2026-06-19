@@ -18,7 +18,7 @@ function ChapterVisual({ c, label }: { c: ChapterType; label: string }) {
       style={{ background: c.bg }}
     >
       <div
-        className="pointer-events-none absolute h-[70%] w-[70%] rounded-full blur-[110px]"
+        className="pointer-events-none absolute h-[70%] w-[70%] rounded-full blur-[60px]"
         style={{ background: c.accent, opacity: 0.16 }}
         aria-hidden
       />

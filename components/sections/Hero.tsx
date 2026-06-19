@@ -13,9 +13,9 @@ import { Button } from "@/components/ui/Button";
 import { scrollToId } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
 
-/* Warm pour shot — amber light, soft steam */
+/* Moody dark pour — single cup, uncluttered */
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2200";
+  "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=2200";
 
 /* ── rising steam wisps ── */
 function Steam({ disabled }: { disabled: boolean }) {
@@ -96,7 +96,7 @@ export function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 py-24 text-center sm:px-[5vw]"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-24 pt-36 text-center sm:px-[5vw]"
     >
       {/* ── Background (parallax) ── */}
       <motion.div className="absolute inset-0" style={{ y: reduce ? 0 : bgY }}>
@@ -104,26 +104,24 @@ export function Hero() {
           src={HERO_IMG}
           alt=""
           aria-hidden
-          className="h-[112%] w-full object-cover object-center"
+          className="h-[112%] w-full object-cover object-[center_55%]"
           style={{ scale: reduce ? 1.06 : bgScale }}
         />
-        {/* warm amber-dark wash — lighter so the image breathes */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#140b05]/68 via-[#0d0705]/60 to-[#100806]/82" />
-        {/* morning-light radial glow — stronger, centred higher */}
+        {/* deep espresso wash — lets the image breathe but keeps text crisp */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0603]/85 via-[#0d0705]/70 to-[#100806]/90" />
+        {/* warm amber pool — centred on the cup */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[35%] h-[80vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]"
+          className="pointer-events-none absolute left-1/2 top-[45%] h-[70vh] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(196,126,63,0.42) 0%, rgba(180,100,30,0.18) 45%, transparent 70%)",
+              "radial-gradient(ellipse, rgba(196,126,63,0.28) 0%, rgba(180,100,30,0.10) 50%, transparent 72%)",
           }}
           aria-hidden
         />
-        {/* soft edge vignette — reduced so it doesn't cold-crush corners */}
+        {/* edge vignette */}
         <div
           className="pointer-events-none absolute inset-0"
-          style={{
-            boxShadow: "inset 0 0 160px 40px rgba(8,5,3,0.60)",
-          }}
+          style={{ boxShadow: "inset 0 0 200px 60px rgba(6,4,2,0.75)" }}
           aria-hidden
         />
       </motion.div>
@@ -161,7 +159,7 @@ export function Hero() {
       >
         {/* Eyebrow with greeting + hairline */}
         <motion.div variants={item} className="flex flex-col items-center gap-4">
-          <span className="inline-flex items-center gap-2.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-white/70">
+          <span className="inline-flex items-center gap-2.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-white/80">
             Speciality Coffee Concentrate
           </span>
           <span className="h-px w-12 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
@@ -179,7 +177,7 @@ export function Hero() {
           </span>
           <span className="block overflow-hidden pb-1">
             <motion.span variants={lineMask} className="block">
-              a bottle.
+              a House.
             </motion.span>
           </span>
         </motion.h1>

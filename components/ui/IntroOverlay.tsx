@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const LINES = ["2am.", "The machine is dead.", "There's a third way."];
+const SEEN_KEY = "inhaus-intro-seen";
 
 export function IntroOverlay() {
   const [visible, setVisible] = useState(false);
@@ -12,6 +13,9 @@ export function IntroOverlay() {
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Only play once per session — return visits and refreshes are instant
+    if (sessionStorage.getItem(SEEN_KEY)) return;
+    sessionStorage.setItem(SEEN_KEY, "1");
     setVisible(true);
     const t = setTimeout(() => setOut(true), 2500);
     return () => clearTimeout(t);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -83,6 +83,20 @@ export function Hero() {
   const reduce = useReducedMotion() ?? false;
   const ref = useRef<HTMLElement>(null);
 
+  // Parallax binds scroll to style on every frame — cheap on desktop, janky on
+  // mobile where it repaints the large hero image. Only enable on large screens.
+  const [isDesktop, setIsDesktop] = useState(false);
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mq.matches);
+    const on = () => setIsDesktop(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+  const parallax = !reduce && isDesktop;
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -99,13 +113,13 @@ export function Hero() {
       className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-20 pt-28 text-center sm:pb-24 sm:pt-36 sm:px-[5vw]"
     >
       {/* ── Background (parallax) ── */}
-      <motion.div className="absolute inset-0" style={{ y: reduce ? 0 : bgY }}>
+      <motion.div className="absolute inset-0" style={{ y: parallax ? bgY : 0 }}>
         <motion.img
           src={HERO_IMG}
           alt=""
           aria-hidden
           className="h-[112%] w-full object-cover object-[center_35%]"
-          style={{ scale: reduce ? 1.06 : bgScale }}
+          style={{ scale: parallax ? bgScale : 1.06 }}
         />
         {/* warm espresso wash — dark enough for text, amber-tinted not cold */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a02]/80 via-[#120603]/62 to-[#0c0402]/90" />
@@ -154,7 +168,7 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        style={{ y: reduce ? 0 : contentY, opacity: reduce ? 1 : contentOpacity }}
+        style={{ y: parallax ? contentY : 0, opacity: parallax ? contentOpacity : 1 }}
         className="relative z-10 flex max-w-[780px] flex-col items-center"
       >
         {/* Eyebrow with greeting + hairline */}

@@ -147,24 +147,44 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   );
   const total = Math.max(0, subtotal - discount);
 
-  const value: CartContextValue = {
-    items,
-    totalQty,
-    subtotal,
-    discount,
-    total,
-    coupon,
-    couponError,
-    isOpen,
-    toast,
-    open,
-    close,
-    addItem,
-    setQty,
-    removeItem,
-    applyCoupon,
-    removeCoupon,
-  };
+  const value: CartContextValue = useMemo(
+    () => ({
+      items,
+      totalQty,
+      subtotal,
+      discount,
+      total,
+      coupon,
+      couponError,
+      isOpen,
+      toast,
+      open,
+      close,
+      addItem,
+      setQty,
+      removeItem,
+      applyCoupon,
+      removeCoupon,
+    }),
+    [
+      items,
+      totalQty,
+      subtotal,
+      discount,
+      total,
+      coupon,
+      couponError,
+      isOpen,
+      toast,
+      open,
+      close,
+      addItem,
+      setQty,
+      removeItem,
+      applyCoupon,
+      removeCoupon,
+    ],
+  );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
